@@ -21,7 +21,6 @@ scalar DateTime
    products:[Product!]
  }
 
-
  type Product{
    id:Int
    name:String
@@ -29,8 +28,15 @@ scalar DateTime
    prince:Float
    image:String
    owner:User
+   category:Category
    createdAt:DateTime
    updatedAt:DateTime
+ }
+
+
+ type Category{
+   id:Int
+   name:String
  }
 
 type  cart{
