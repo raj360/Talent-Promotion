@@ -1,0 +1,59 @@
+.sidebar {
+  display: block;
+  width: 100%;
+  margin-top: -10px;
+  background-color:#292828;
+
+  .image {
+    width: 100%;
+    & img {
+      display: block;
+      margin: 10px auto;
+      border-radius: 100%;
+    }
+  }
+
+  .line{
+    background-color: #fff;
+    borderRadius:5px;
+    margin: 5px;
+
+  }
+
+  .sideMenu {
+    padding:10px;
+    height: 100%;
+    margin-bottom: -20px;
+    color: #ededed;
+    & p {
+    
+      margin-top: 20px;
+      height: 40px;
+
+      & a {
+        margin-left: 25%;
+        text-decoration: none;
+        text-align: center;
+        font-size: 20px;
+        color: black;
+      }
+
+      &:hover {
+        background-color: #ededed;
+      }
+    }
+    // & ul li {
+    //   //   width: 100%;
+    //   //   margin: 30px 30px;
+    //   list-style: none;
+    //   //   font-weight: bolder;
+    //   background-color: blue;
+
+    //   & a {
+    //     text-decoration: none;
+    //     color: black;
+    //     text-align: center;
+    //   }
+    // }
+  }
+}

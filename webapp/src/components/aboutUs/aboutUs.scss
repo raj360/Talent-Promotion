@@ -1,0 +1,298 @@
+.us {
+  margin-bottom: 40px;
+
+  & h1 {
+    text-align: center;
+    margin: 20px;
+  }
+  background-color: rgb(247, 249, 249);
+  .abouts {
+    width: 100vw;
+
+    margin-bottom: 50px;
+    .mission {
+      width: 40vw;
+      border: 5px solid rgb(247, 249, 249);
+
+      h5 {
+        text-align: center;
+        font-size: 30px;
+        line-height: 1.3;
+        // color: white;
+      }
+      & p {
+        width: 80%;
+        margin: auto;
+        height: relative;
+        font-size: 18px;
+        // color: white;
+      }
+    }
+
+    .about {
+      width: 40vw;
+      border: 2px solid rgb(247, 249, 249);
+      margin-left: 50vw;
+      h5 {
+        text-align: center;
+        margin: auto;
+        font-size: 30px;
+        line-height: 1.3;
+        // color: white;
+      }
+      & p {
+        width: 80%;
+        margin: auto;
+        font-weight: lighter;
+        font-size: 18px;
+        height: relative;
+      }
+    }
+  }
+
+  .admins {
+    display: flex;
+    flex-direction: row;
+    max-width: 100vw;
+
+    .admin {
+      width: 25vw;
+      height: 50vh;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+
+      & img {
+        display: block;
+        margin: 0 auto;
+        width: 70%;
+        border-radius: 50%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .us {
+    margin-bottom: 40px;
+    & h1 {
+      text-align: center;
+      margin: 20px;
+    }
+    background-color: rgb(247, 249, 249);
+    .abouts {
+      width: 100vw;
+      margin-bottom: 50px;
+      .mission {
+        width: 40vw;
+        border: 5px solid rgb(247, 249, 249);
+
+        & h5 {
+          text-align: center;
+          font-size: 30px;
+          line-height: 1.3;
+          margin: 10px;
+        }
+        & p {
+          width: auto;
+          text-align: center;
+          margin: 0px;
+          height: relative;
+          font-size: 18px;
+        }
+      }
+
+      .about {
+        width: 40vw;
+        border: 2px solid rgb(247, 249, 249);
+        margin-left: 50vw;
+        & h5 {
+          text-align: center;
+          font-size: 30px;
+          line-height: 1.3;
+          margin: 10px;
+        }
+        & p {
+          width: 80%;
+          margin: auto;
+          font-weight: lighter;
+          font-size: 18px;
+          height: relative;
+        }
+      }
+    }
+
+    .admins {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      max-width: 100vw;
+
+      .admin {
+        flex: 0 33%;
+        width: 300px;
+        height: 300px;
+        align-items: center;
+        text-align: center;
+        margin-top: 20px;
+        padding: 20px;
+
+        & img {
+          display: block;
+          margin: 0 auto;
+          width: 70%;
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .us {
+    margin-bottom: 40px;
+    & h1 {
+      text-align: center;
+      margin: 20px;
+    }
+    background-color: rgb(247, 249, 249);
+    .abouts {
+      width: 100vw;
+      margin-bottom: 50px;
+      .mission {
+        width: 80vw;
+        border: 5px solid rgb(247, 249, 249);
+
+        & h5 {
+          text-align: center;
+          font-size: 30px;
+          line-height: 1.3;
+          margin: 10px;
+        }
+        & p {
+          width: auto;
+          text-align: center;
+          margin: 0px;
+          height: relative;
+          font-size: 18px;
+        }
+      }
+
+      .about {
+        width: 80vw;
+        border: 2px solid rgb(247, 249, 249);
+        margin-left: 0px;
+        & h5 {
+          text-align: center;
+          font-size: 30px;
+          line-height: 1.3;
+          margin: 10px;
+        }
+        & p {
+          width: auto;
+          text-align: center;
+          margin: 0px;
+          height: relative;
+          font-size: 18px;
+        }
+      }
+    }
+
+    .admins {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      max-width: 100vw;
+
+      .admin {
+        flex: 0 50%;
+        width: 300px;
+        height: 300px;
+        align-items: center;
+        text-align: center;
+        margin-top: 20px;
+        padding: 20px;
+
+        & img {
+          display: block;
+          margin: 0 auto;
+          width: 70%;
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .us {
+    margin-bottom: 40px;
+    & h1 {
+      text-align: center;
+      margin: 20px;
+    }
+    background-color: rgb(247, 249, 249);
+    .abouts {
+      width: 100vw;
+      margin-bottom: 50px;
+      .mission {
+        width: 80vw;
+        border: 5px solid rgb(247, 249, 249);
+
+        & h5 {
+          text-align: center;
+          font-size: 30px;
+          line-height: 1.3;
+          margin: 10px;
+        }
+        & p {
+          width: auto;
+          text-align: center;
+          margin: 0px;
+          height: relative;
+          font-size: 18px;
+        }
+      }
+
+      .about {
+        width: 80vw;
+        border: 2px solid rgb(247, 249, 249);
+        margin-left: 0px;
+        & h5 {
+          text-align: center;
+          font-size: 30px;
+          line-height: 1.3;
+          margin: 10px;
+        }
+        & p {
+          width: auto;
+          text-align: center;
+          margin: 0px;
+          height: relative;
+          font-size: 18px;
+        }
+      }
+    }
+
+    .admins {
+      display: flex;
+      flex-direction: column;
+      max-width: 100vw;
+
+      .admin {
+        width: 80vw;
+        height: 50vh;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+
+        & img {
+          display: block;
+          margin: 0 auto;
+          width: 70%;
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+}

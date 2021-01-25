@@ -1,0 +1,93 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding-top: 20px;
+
+  a {
+    color: blue;
+  }
+
+  & h2 {
+    font-weight: bold;
+    color: black;
+    margin: 20px;
+  }
+
+  & .sign-up-form {
+    display: inline-block;
+    background: rgb(250, 248, 248);
+    padding: 1.5em;
+    border-radius: 1em;
+    width: 30vw;
+    align-self: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .content {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    & h2 {
+      font-weight: bold;
+      color: black;
+      margin: 20px;
+    }
+
+    & .sign-up-form {
+      display: inline-block;
+      background: rgb(250, 248, 248);
+      padding: 1.5em;
+      border-radius: 1em;
+      min-width: 80vw;
+      align-self: center;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .content {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    & h2 {
+      font-weight: bold;
+      color: black;
+      margin: 20px;
+    }
+
+    & .sign-up-form {
+      display: inline-block;
+      background: rgb(250, 248, 248);
+      padding: 1.5em;
+      border-radius: 1em;
+      width: 60vw;
+      align-self: center;
+    }
+  }
+}
+@media (max-width: 1200px) {
+  .content {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    & h2 {
+      font-weight: bold;
+      color: black;
+      margin: 20px;
+    }
+
+    & .sign-up-form {
+      display: inline-block;
+      background: rgb(250, 248, 248);
+      padding: 1.5em;
+      border-radius: 1em;
+      width: 60vw;
+      align-self: center;
+    }
+  }
+}

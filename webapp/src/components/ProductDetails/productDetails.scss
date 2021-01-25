@@ -1,0 +1,126 @@
+.details {
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+
+  .product {
+    .properties {
+      opacity: 0;
+      display: none;
+    }
+    .image {
+      width: 40vw;
+      height: 40vw;
+      background-color: rgb(247, 249, 249);
+      img {
+        width: 20vw;
+        height: 30vw;
+        margin-top: 5vw;
+        margin-left: 10vw;
+        margin-right: 10vw;
+        border-radius: 20px;
+      }
+    }
+  }
+
+  .detail {
+    margin-left: 5vw;
+    width: 45vw;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(250, 248, 248);
+
+    .properties {
+      margin: auto;
+      //   margin-top: 5vw;
+      //   margin-left: 5vw;
+      //   margin-right: 5vw;
+      box-sizing: border-box;
+      h4 {
+        font-weight: bold;
+        text-transform: uppercase;
+        padding: 10px;
+      }
+      .button {
+        display: inline;
+      }
+    }
+
+    .button {
+      display: none;
+      margin: auto;
+      //   display: inline;
+    }
+
+    .desc {
+      display: none;
+      margin: auto;
+      //   margin-top: 5vw;
+      //   margin-left: 5vw;
+      //   margin-right: 5vw;
+      //   box-sizing: border-box;
+
+      //   h3 {
+      //     margin-left: 10vw;
+      //     margin-right: 10vw;
+      //   }
+    }
+  }
+
+  .button {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .details {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+
+    .product {
+      display: flex;
+      width: auto;
+      flex-direction: column;
+      .properties {
+        opacity: 1;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+
+        h4 {
+          font-weight: normal;
+          margin: 10px;
+          text-transform: uppercase;
+        }
+      }
+      .image {
+        width: 100vw;
+        height: 70vw;
+        margin-bottom: 30px;
+
+        img {
+          width: 40vw;
+          height: 60vw;
+          margin-top: 5vw;
+          margin-left: 30vw;
+          margin-right: 25vw;
+          border-radius: 20px;
+        }
+      }
+    }
+    .detail {
+      display: none;
+      margin: 20vw;
+      margin-top: 10px;
+      .properties {
+        display: none;
+      }
+    }
+
+    .button {
+      display: flex;
+      justify-content: space-around;
+    }
+  }
+}

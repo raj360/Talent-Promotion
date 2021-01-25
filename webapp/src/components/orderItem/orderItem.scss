@@ -1,0 +1,35 @@
+.checkout-item {
+ 
+  margin:5px;
+
+
+  .image-container {
+    width: 20%;
+    padding-right: 15px;
+    height: 10vh;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .name,
+  .quantity,
+  .price {
+    width: 23%;
+  }
+
+  .quantity {
+    display: flex;
+    .value {
+      margin: 0 0.5rem;
+    }
+    .arrow {
+      cursor: pointer;
+    }
+  }
+
+  .remove-button {
+    padding-left: 12px;
+    cursor: pointer;
+  }
+}

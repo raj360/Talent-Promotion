@@ -1,0 +1,313 @@
+.header {
+  height: 70px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+  background-color: rgb(250, 248, 248);
+
+  .mobile {
+    display: none;
+  }
+
+  .logo-container {
+    height: 100%;
+    width: 70px;
+    padding: 25px;
+    color: black;
+    font-weight: bolder;
+  }
+
+  .options {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    .option {
+      padding: 10px 15px;
+      cursor: pointer;
+      font-weight: bold;
+      color: black;
+      // background-color: blue;
+    }
+  }
+}
+
+.pages {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+@media screen and (max-width: 1200px) {
+  .header {
+    height: 60px;
+    width: 100%;
+    margin-bottom: 20px;
+    .mobile {
+      display: block;
+      margin-left: 80vw;
+      .icon {
+        width: 45px;
+        height: 45px;
+        position: relative;
+        margin-top: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .icons {
+          width: 24px;
+          height: 24px;
+        }
+      }
+
+      .nav-menu {
+        position: absolute;
+        width: 200px;
+        height: 300px;
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        margin-right: 20px;
+        background-color: rgb(250, 248, 248);
+        top: 80px;
+        right: 100%;
+        z-index: 1;
+        transition: 850ms;
+
+        .nav-item {
+          display: flex;
+          justify-content: flex-start;
+
+          a {
+            text-decoration: none;
+            color: black;
+            font-weight: bolder;
+            border-radius: 4px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+          }
+        }
+      }
+      .nav-menu.active {
+        right: 0;
+        transition: 350ms;
+      }
+    }
+
+    .logo-container {
+      height: 100%;
+      width: 50px;
+      padding: 25px;
+      color: black;
+      font-weight: bolder;
+    }
+
+    .options {
+      display: none;
+      width: 80%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      // justify-content: flex-end;
+
+      .option {
+        display: none;
+        padding: 10px 15px;
+        cursor: pointer;
+        font-weight: bold;
+        color: black;
+        // background-color: blue;
+      }
+    }
+  }
+
+  .pages {
+    display: flex;
+    justify-content: space-evenly;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    height: 60px;
+    width: 100%;
+    margin-bottom: 20px;
+    .mobile {
+      display: block;
+      margin-left: 70vw;
+
+      .icon {
+        width: 45px;
+        height: 45px;
+        position: relative;
+        margin-top: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .icons {
+          width: 24px;
+          height: 24px;
+        }
+      }
+
+      .nav-menu {
+        position: absolute;
+        width: 200px;
+        height: 300px;
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        margin-right: 20px;
+        background-color: rgb(250, 248, 248);
+        top: 80px;
+        right: 100%;
+        z-index: 1;
+        transition: 850ms;
+
+        .nav-item {
+          display: flex;
+          justify-content: flex-start;
+
+          a {
+            text-decoration: none;
+            color: black;
+            font-weight: bolder;
+            border-radius: 4px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+          }
+        }
+      }
+      .nav-menu.active {
+        right: 0;
+        transition: 350ms;
+      }
+    }
+
+    .logo-container {
+      height: 100%;
+      width: 50px;
+      padding: 25px;
+      color: black;
+      font-weight: bolder;
+    }
+
+    .options {
+      display: none;
+      width: 80%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      // justify-content: flex-end;
+
+      .option {
+        display: none;
+        padding: 10px 15px;
+        cursor: pointer;
+        font-weight: bold;
+        color: black;
+        // background-color: blue;
+      }
+    }
+  }
+
+  .pages {
+    display: flex;
+    justify-content: space-evenly;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .header {
+    height: 60px;
+    width: 100%;
+    margin-bottom: 20px;
+    .mobile {
+      display: flex;
+      margin-left: 55vw;
+
+      .icon {
+        width: 45px;
+        height: 45px;
+        position: relative;
+        margin-top: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .icons {
+          width: 24px;
+          height: 24px;
+        }
+      }
+
+      .nav-menu {
+        position: absolute;
+        width: 200px;
+        height: 300px;
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        margin-right: 20px;
+        background-color: rgb(250, 248, 248);
+        top: 80px;
+        right: 100%;
+        z-index: 1;
+        transition: 850ms;
+
+        .nav-item {
+          display: flex;
+          justify-content: flex-start;
+
+          a {
+            text-decoration: none;
+            color: black;
+            font-weight: bolder;
+            border-radius: 4px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+          }
+        }
+      }
+      .nav-menu.active {
+        right: 0;
+        transition: 350ms;
+      }
+    }
+
+    .logo-container {
+      height: 100%;
+      width: 50px;
+      padding: 25px;
+      color: black;
+      font-weight: bolder;
+    }
+
+    .options {
+      display: none;
+      width: 80%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      // justify-content: flex-end;
+
+      .option {
+        display: none;
+        padding: 10px 15px;
+        cursor: pointer;
+        font-weight: bold;
+        color: black;
+        // background-color: blue;
+      }
+    }
+  }
+
+  .pages {
+    display: flex;
+    justify-content: space-evenly;
+  }
+}

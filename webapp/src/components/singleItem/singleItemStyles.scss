@@ -1,0 +1,122 @@
+.item {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+  align-items: center;
+  position: relative;
+  background-color: rgb(247, 249, 249);
+  margin-bottom: 20px;
+  border-radius: 10px;
+
+  .image img {
+    margin: 20px;
+    width: 200px;
+    height: 300px;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+
+  .card-foot {
+    display: flex;
+    flex-direction: column;
+    & h3 {
+      margin: auto;
+      padding: 5px;
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .item {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    align-items: center;
+    position: relative;
+    background-color: rgb(247, 249, 249);
+    margin-bottom: 20px;
+    border-radius: 10px;
+
+    .image img {
+      margin: auto;
+      margin-top: 20px;
+      width: 150px;
+      height: 200px;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    .card-foot {
+      display: flex;
+      flex-direction: column;
+      h3 {
+        margin: auto;
+        padding: 5px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .item {
+    width: 230px;
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    align-items: center;
+    margin: 10px;
+    position: relative;
+    background-color: rgb(247, 249, 249);
+    margin-bottom: 20px;
+    border-radius: 10px;
+
+    .image img {
+      width: 130px;
+      height: 200px;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    .card-foot {
+      display: flex;
+      flex-direction: column;
+      & h3 {
+        margin: auto;
+        padding: 5px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .item {
+    width: 230px;
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    align-items: center;
+    margin: 10px;
+    position: relative;
+    background-color: rgb(247, 249, 249);
+    margin-bottom: 20px;
+    border-radius: 10px;
+
+    .image img {
+      width: 130px;
+      height: 200px;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    .card-foot {
+      display: flex;
+      flex-direction: column;
+      h3 {
+        margin: auto;
+        padding: 5px;
+      }
+    }
+  }
+}

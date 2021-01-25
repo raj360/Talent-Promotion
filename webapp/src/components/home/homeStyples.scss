@@ -1,0 +1,169 @@
+.home {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+
+  .icons {
+    display: none;
+  }
+
+  .categories {
+    width: 20%;
+    height: 500px;
+
+    h3 {
+      font-weight: bold;
+    }
+    p {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      padding: 10px;
+      list-style: none;
+      border: blanchedalmond;
+      align-content: center;
+      cursor: pointer;
+      &:hover {
+        background-color: rgb(209, 223, 223);
+      }
+    }
+  }
+
+  .items {
+    width: 80vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    overflow: hidden;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .home {
+    max-width: 100vw;
+    display: flex;
+    flex-direction: row;
+
+    .icons {
+      margin-left: 10px;
+      display: inline;
+    }
+
+    .categories {
+      display: none;
+      margin: 10px;
+
+      height: 500px;
+      & ul li {
+        margin: 10px;
+        list-style: none;
+        align-content: center;
+        cursor: pointer;
+      }
+    }
+
+    .items {
+      width: 90vw;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      overflow-x: hidden;
+    }
+  }
+}
+
+@media screen and (max-width: 786px) {
+  .home {
+    max-width: 100vw;
+    display: flex;
+    // flex-direction: row;
+
+    .icons {
+      margin-left: 10px;
+      display: inline;
+    }
+
+    .categories {
+      display: none;
+      margin: 10px;
+
+      height: 500px;
+      & ul li {
+        margin: 10px;
+        list-style: none;
+        align-content: center;
+        cursor: pointer;
+      }
+    }
+
+    .items {
+      width: 100vw;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      overflow: hidden;
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .home {
+    max-width: 100vw;
+    display: flex;
+
+    .icons {
+      margin-left: 10px;
+      margin-top: 5px;
+      display: flex;
+
+      .nav-menu {
+        position: absolute;
+        width: 280px;
+        height: 500px;
+        display: flex;
+        margin-left: 30px;
+        flex-direction: column;
+        padding: 20px;
+        top: 130px;
+        left: -100%;
+        z-index: 1;
+        transition: 3s;
+
+        .navs {
+          display: flex;
+          justify-content: flex-start;
+
+          a {
+            margin-top: 10px;
+            margin-bottom: 20px;
+            text-decoration: none;
+            color: #000;
+            margin-left: 0;
+            font-weight: bold;
+            align-items: center;
+          }
+        }
+      }
+
+      .nav-menu.active {
+        background-color: rgb(250, 248, 248);
+        left: 0;
+        transition: 1s;
+      }
+    }
+    .categories {
+      display: none;
+    }
+
+    .items {
+      width: 90vw;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      overflow: hidden;
+    }
+  }
+}
