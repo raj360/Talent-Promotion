@@ -5,49 +5,49 @@ module.exports =gql`
 scalar DateTime
 
  type Query{
-   test:String
+   test:String!
  }
 
  type Response {
    error:Boolean
-   message:String
+   message:String!
  }
  
  type Mutation{
-   test:String
-   userSignUp(username:String,firstName:String,lastName:String,password:String,telephone:String):User
-   userSignIn(username:String,telephone:String,password:String):User
-   createProduct(name:String,description:String,prince:Float,image:Upload,userId:Int,productCategoryId:Int):Product
+   test:String!
+   userSignUp(username:String!,firstName:String!,lastName:String!,password:String!,telephone:String!):User
+   userSignIn(username:String!,telephone:String!,password:String!):User
+   createProduct(name:String!,description:String!,price:Float,image:Upload!,userId:Int,productCategoryId:Int):Product
    createCart(quantity:Int,price:Float,cartId:Int,productId:Int):Cart
-   incrementCart(cartItemId:Int,quantity:Int,price:Float,userId:Int):CartDetails
-   decrementCart(cartItemId:Int,quantity:Int,price:Float,userId:Int):CartDetails
+   incrementCart(cartItemId:Int):CartDetails
+   decrementCart(cartItemId:Int):CartDetails
    removeCart(cartItemId:Int):CartDetails
-   createOrder(userId:Int,price:Float,quantity:Int):Order
+   createOrder(userId:Int,price:Float,quantity:Int,cartItemId:Int):Order
  }
 
  type User{
    id:Int
-   username:String
-   firstName:String
-   lastName:String
-   telephone:String
+   username:String!
+   firstName:String!
+   lastName:String!
+   telephone:String!
    address:Address
    products:[Product!]
  }
 
  type Address{
    id:Int
-   country:String
-   district:String
-   city:String
+   country:String!
+   district:String!
+   city:String!
  }
 
  type Product{
    id:Int
-   name:String
-   description:String
+   name:String!
+   description:String!
    prince:Float
-   image:String
+   image:String!
    owner:User
    category:Category
    createdAt:DateTime
@@ -57,7 +57,7 @@ scalar DateTime
 
  type Category{
    id:Int
-   name:String
+   name:String!
  }
 
 type  Cart{
@@ -68,7 +68,7 @@ type  Cart{
 
 type CartDetails{
   id:Int
-  status:String
+  status:String!
   quantity:Int
   product:Product
    createdAt:DateTime
