@@ -17,16 +17,17 @@ scalar DateTime
    test:String!
    userSignUp(username:String!,firstName:String!,lastName:String!,password:String!,telephone:String!):User
    userSignIn(username:String!,telephone:String!,password:String!):User
-   createProduct(name:String!,description:String!,price:Float,image:Upload!,userId:Int,productCategoryId:Int):Product
-   createCart(quantity:Int,price:Float,cartId:Int,productId:Int):Cart
-   incrementCart(cartItemId:Int):CartDetails
-   decrementCart(cartItemId:Int):CartDetails
-   removeCart(cartItemId:Int):CartDetails
-   createOrder(userId:Int,price:Float,quantity:Int,cartItemId:Int):Order
+   createProduct(name:String!,description:String!,price:Float,image:Upload!,userId:Int!,productCategoryId:Int!):Product
+   createCart(quantity:Int!,price:Float,cartId:Int!,productId:Int!):Cart
+   incrementCart(cartItemId:Int!):CartDetails
+   decrementCart(cartItemId:Int!):CartDetails
+   removeCart(cartItemId:Int!):CartDetails
+   createOrder(userId:Int!,price:Float,quantity:Int!,cartItemId:Int!):Order,
+   userAddress(userId:Int!,country:String!,city:String!,disctrict:String!):Address
  }
 
  type User{
-   id:Int
+   id:Int!
    username:String!
    firstName:String!
    lastName:String!
@@ -36,14 +37,14 @@ scalar DateTime
  }
 
  type Address{
-   id:Int
+   id:Int!
    country:String!
    district:String!
    city:String!
  }
 
  type Product{
-   id:Int
+   id:Int!
    name:String!
    description:String!
    prince:Float
@@ -56,35 +57,35 @@ scalar DateTime
 
 
  type Category{
-   id:Int
+   id:Int!
    name:String!
  }
 
 type  Cart{
-  id:Int
+  id:Int!
   user:User
   cartDetails:CartDetails
 }
 
 type CartDetails{
-  id:Int
+  id:Int!
   status:String!
-  quantity:Int
+  quantity:Int!
   product:Product
    createdAt:DateTime
    updatedAt:DateTime
 }
 
 type Order{
-  id:Int
+  id:Int!
   user:User
   orderDetails:OrderDetails
 }
 
 type OrderDetails{
-  id:Int
-  price:Int
-  quantity:Int
+  id:Int!
+  price:Int!
+  quantity:Int!
   product:Product
   createdAt:DateTime
   updatedAt:DateTime
