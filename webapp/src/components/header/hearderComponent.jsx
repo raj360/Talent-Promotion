@@ -20,7 +20,8 @@ const Header = ({ hidden }) => {
   return (
     <div className="header">
       <Link className="logo-container" to="/">
-        Home
+
+       <img src={require(`../../assets/ad.png`)}/>  Talents Promotion Platform
       </Link>
 
       <div className="mobile">
