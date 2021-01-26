@@ -36,10 +36,10 @@ function initModels(sequelize) {
   product.hasMany(category, { foreignKey: "productId"});
   order.belongsTo(user, { foreignKey: "userId"});
   user.hasMany(order, { foreignKey: "userId"});
-  orderItem.belongsTo(product, { foreignKey: "productId"});
-  product.hasMany(orderItem, { foreignKey: "productId"});
   orderItem.belongsTo(order, { foreignKey: "orderId"});
   order.hasMany(orderItem, { foreignKey: "orderId"});
+  orderItem.belongsTo(cartItem, { foreignKey: "cartItemId"});
+  cartItem.hasMany(orderItem, { foreignKey: "cartItemId"});
   product.belongsTo(user, { foreignKey: "userId"});
   user.hasMany(product, { foreignKey: "userId"});
   transaction.belongsTo(order, { foreignKey: "orderId"});

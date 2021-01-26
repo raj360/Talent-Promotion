@@ -9,10 +9,6 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       primaryKey: true
     },
-    orderid: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
     userId: {
       type: DataTypes.INTEGER,
       allowNull: false,

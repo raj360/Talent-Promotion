@@ -10,7 +10,7 @@ module.exports = function(sequelize, DataTypes) {
       primaryKey: true
     },
     price: {
-      type: DataTypes.DECIMAL(19,0),
+      type: DataTypes.DECIMAL(10,2),
       allowNull: true
     },
     quantity: {
@@ -19,17 +19,21 @@ module.exports = function(sequelize, DataTypes) {
     },
     productId: {
       type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: 'product',
-        key: 'id'
-      }
+      allowNull: false
     },
     orderId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
         model: 'order',
+        key: 'id'
+      }
+    },
+    cartItemId: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: 'cartItem',
         key: 'id'
       }
     }
@@ -47,17 +51,17 @@ module.exports = function(sequelize, DataTypes) {
         ]
       },
       {
-        name: "FKorderItem200356",
-        using: "BTREE",
-        fields: [
-          { name: "productId" },
-        ]
-      },
-      {
         name: "FKorderItem999393",
         using: "BTREE",
         fields: [
           { name: "orderId" },
+        ]
+      },
+      {
+        name: "FKorderItem199050",
+        using: "BTREE",
+        fields: [
+          { name: "cartItemId" },
         ]
       },
     ]

@@ -15,8 +15,9 @@ module.exports = function(sequelize, DataTypes) {
       unique: "code"
     },
     status: {
-      type: DataTypes.STRING(10),
-      allowNull: true
+      type: DataTypes.ENUM('PAID','PENDING','SUCCESSFUL'),
+      allowNull: true,
+      defaultValue: "PENDING"
     },
     type: {
       type: DataTypes.STRING(20),
