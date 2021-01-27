@@ -32,6 +32,14 @@ module.exports = function(sequelize, DataTypes) {
         model: 'user',
         key: 'id'
       }
+    },
+    categoryId: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: 'category',
+        key: 'id'
+      }
     }
   }, {
     sequelize,
@@ -51,6 +59,13 @@ module.exports = function(sequelize, DataTypes) {
         using: "BTREE",
         fields: [
           { name: "userId" },
+        ]
+      },
+      {
+        name: "FKproduct572558",
+        using: "BTREE",
+        fields: [
+          { name: "categoryId" },
         ]
       },
     ]

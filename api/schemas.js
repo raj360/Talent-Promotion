@@ -8,6 +8,7 @@ scalar DateTime
    test:String!
  }
 
+
  type Response {
    error:Boolean
    message:String!
@@ -17,7 +18,7 @@ scalar DateTime
    test:String!
    userSignUp(username:String!,firstName:String!,lastName:String!,password:String!,telephone:String!):User
    userSignIn(username:String!,telephone:String!,password:String!):User
-   createProduct(name:String!,description:String!,price:Float,image:Upload!,userId:Int!,productCategoryId:Int!):Product
+   createProduct(name:String!,description:String!,price:Float!,image:Upload!,userId:Int!,categoryId:Int!):Product
    createCart(quantity:Int!,price:Float,cartId:Int!,productId:Int!):Cart
    incrementCart(cartItemId:Int!):CartDetails
    decrementCart(cartItemId:Int!):CartDetails
@@ -25,6 +26,7 @@ scalar DateTime
    createOrder(userId:Int!,price:Float,quantity:Int!,cartItemId:Int!):Order,
    userAddress(userId:Int!,country:String!,city:String!,disctrict:String!):Address
  }
+
 
  type User{
    id:Int!

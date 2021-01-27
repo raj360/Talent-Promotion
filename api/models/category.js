@@ -9,21 +9,9 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       primaryKey: true
     },
-    productCategoryId: {
+    name: {
       type: DataTypes.INTEGER,
-      allowNull: true,
-      references: {
-        model: 'productCategory',
-        key: 'id'
-      }
-    },
-    productId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: 'product',
-        key: 'id'
-      }
+      allowNull: true
     }
   }, {
     sequelize,
@@ -36,20 +24,6 @@ module.exports = function(sequelize, DataTypes) {
         using: "BTREE",
         fields: [
           { name: "id" },
-        ]
-      },
-      {
-        name: "FKcategory538392",
-        using: "BTREE",
-        fields: [
-          { name: "productCategoryId" },
-        ]
-      },
-      {
-        name: "FKcategory791596",
-        using: "BTREE",
-        fields: [
-          { name: "productId" },
         ]
       },
     ]

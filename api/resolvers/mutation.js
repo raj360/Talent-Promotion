@@ -29,7 +29,7 @@ module.exports ={
 
     if(user.id){
      const cart = await models.cart.create({userId:user.id});
-    
+
      if(cart){
        return user;
      }else{
@@ -41,8 +41,8 @@ module.exports ={
     }
 
   },
-  userSignIn:async (parent,{username,password},{models})  => await models.user.findOne({where: {username,password}}),
-  createProduct:async (parent,{name,description,price,image,userId,productCategoryId},models)=> {
+  userSignIn:async (parent,{username,password,telephone},{models})  => await models.user.findOne({$or: [{password,telephone},{username,password}]}),
+  createProduct:async (parent,{name,description,price,image,userId,categoryId},{models})=> {
 
     //this if the file managment part of this system 
     const { filename,createReadStream } = await image;
@@ -50,7 +50,7 @@ module.exports ={
     const result = await storeFS({ stream, filename });
     const imageUrl  = result.filename;
 
-   return  await models.product.create({name,description,price,imageUrl,userId,productCategoryId});
+   return  await models.product.create({name,description,price,imageUrl,userId,categoryId});
   },
   createCart:async (parent,{quantity,price,cartId,productId})=> await models.cartItem.create({quantity,price,cartId,productId}),
   incrementCart:async (parent,{cartItemId},{models}) => await models.cartItem.increment('quantity',{where:{cartItemId}}),
@@ -59,7 +59,7 @@ module.exports ={
   createOrder:async (parent,{userId,price,quantity,cartItemId},{models}) => {
 
     const order = await models.order.create({userId});
-    
+
     const orderId = order.id;
 
     await models.orderItem.create({price,quantity,cartItemId,orderId});

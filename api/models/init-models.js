@@ -6,7 +6,6 @@ var _category = require("./category");
 var _order = require("./order");
 var _orderItem = require("./orderItem");
 var _product = require("./product");
-var _productCategory = require("./productCategory");
 var _transaction = require("./transaction");
 var _user = require("./user");
 
@@ -18,7 +17,6 @@ function initModels(sequelize) {
   var order = _order(sequelize, DataTypes);
   var orderItem = _orderItem(sequelize, DataTypes);
   var product = _product(sequelize, DataTypes);
-  var productCategory = _productCategory(sequelize, DataTypes);
   var transaction = _transaction(sequelize, DataTypes);
   var user = _user(sequelize, DataTypes);
 
@@ -30,10 +28,6 @@ function initModels(sequelize) {
   cart.hasMany(cartItem, { foreignKey: "cartId"});
   cartItem.belongsTo(product, { foreignKey: "productId"});
   product.hasMany(cartItem, { foreignKey: "productId"});
-  category.belongsTo(productCategory, { foreignKey: "productCategoryId"});
-  productCategory.hasMany(category, { foreignKey: "productCategoryId"});
-  category.belongsTo(product, { foreignKey: "productId"});
-  product.hasMany(category, { foreignKey: "productId"});
   order.belongsTo(user, { foreignKey: "userId"});
   user.hasMany(order, { foreignKey: "userId"});
   orderItem.belongsTo(order, { foreignKey: "orderId"});
@@ -42,6 +36,8 @@ function initModels(sequelize) {
   cartItem.hasMany(orderItem, { foreignKey: "cartItemId"});
   product.belongsTo(user, { foreignKey: "userId"});
   user.hasMany(product, { foreignKey: "userId"});
+  product.belongsTo(category, { foreignKey: "categoryId"});
+  category.hasMany(product, { foreignKey: "categoryId"});
   transaction.belongsTo(order, { foreignKey: "orderId"});
   order.hasMany(transaction, { foreignKey: "orderId"});
   transaction.belongsTo(user, { foreignKey: "userId"});
@@ -55,7 +51,6 @@ function initModels(sequelize) {
     order,
     orderItem,
     product,
-    productCategory,
     transaction,
     user,
   };
