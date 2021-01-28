@@ -6,6 +6,7 @@ scalar DateTime
 
  type Query{
    test:String!
+   testUser:User
  }
 
 
@@ -19,12 +20,13 @@ scalar DateTime
    userSignUp(username:String!,firstName:String!,lastName:String!,password:String!,telephone:String!):User
    userSignIn(username:String!,telephone:String!,password:String!):User
    createProduct(name:String!,description:String!,price:Float!,image:Upload!,userId:Int!,categoryId:Int!):Product
-   createCart(quantity:Int!,price:Float,cartId:Int!,productId:Int!):Cart
-   incrementCart(cartItemId:Int!):CartDetails
-   decrementCart(cartItemId:Int!):CartDetails
-   removeCart(cartItemId:Int!):CartDetails
+   addToCart(cartId:Int!,productId:Int!):Cart
+   incrementCart(userId:Int!,cartItemId:Int!):Cart
+   decrementCart(userId:Int!,cartItemId:Int!):Cart
+   removeFromCart(userId:Int!,cartItemId:Int!):Cart
    createOrder(userId:Int!,price:Float,quantity:Int!,cartItemId:Int!):Order,
-   userAddress(userId:Int!,country:String!,city:String!,disctrict:String!):Address
+   userAddress(userId:Int!,country:String!,city:String!,disctrict:String!):Address,
+   userDetails(userId:Int!):User
  }
 
 
@@ -36,6 +38,7 @@ scalar DateTime
    telephone:String!
    address:Address
    products:[Product!]
+   cart:Cart
  }
 
  type Address{
@@ -49,8 +52,8 @@ scalar DateTime
    id:Int!
    name:String!
    description:String!
-   prince:Float
-   image:String!
+   price:Float
+   imageUrl:String!
    owner:User
    category:Category
    createdAt:DateTime
@@ -66,7 +69,7 @@ scalar DateTime
 type  Cart{
   id:Int!
   user:User
-  cartDetails:CartDetails
+  cartDetails:[CartDetails!]
 }
 
 type CartDetails{
@@ -74,8 +77,8 @@ type CartDetails{
   status:String!
   quantity:Int!
   product:Product
-   createdAt:DateTime
-   updatedAt:DateTime
+  createdAt:DateTime
+  updatedAt:DateTime
 }
 
 type Order{

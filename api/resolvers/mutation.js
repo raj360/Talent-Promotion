@@ -52,10 +52,19 @@ module.exports ={
 
    return  await models.product.create({name,description,price,imageUrl,userId,categoryId});
   },
-  createCart:async (parent,{quantity,price,cartId,productId})=> await models.cartItem.create({quantity,price,cartId,productId}),
-  incrementCart:async (parent,{cartItemId},{models}) => await models.cartItem.increment('quantity',{where:{cartItemId}}),
-  decrementCart:async (parent,{cartItemId},{models}) => await models.cartItem.decrement('quantity',{where:{cartItemId}}),
-  removeCart:async (parent,{cartItemId},{models}) => await models.cartItem.destroy({where:{cartItemId}}),
+  addToCart:async (parent,{userId,cartId,productId},{models})=> await models.cartItem.create({cartId,productId}),
+  incrementCart:async (parent,{cartItemId,userId},{models}) => {
+    await models.cartItem.increment('quantity',{where:{id:cartItemId}});
+    return await models.cart.findOne({where:{userId}});
+  },
+  decrementCart:async (parent,{userId,cartItemId},{models}) => {
+    await models.cartItem.decrement('quantity',{where:{id:cartItemId}})
+    return await models.cart.findOne({where:{userId}})
+  },
+ removeFromCart:async (parent,{userId,cartItemId},{models})=>{
+    await models.cartItem.destroy({where:{id:cartItemId}});
+    return await models.cart.findOne({where:{id:userId}})
+  },
   createOrder:async (parent,{userId,price,quantity,cartItemId},{models}) => {
 
     const order = await models.order.create({userId});
@@ -68,6 +77,7 @@ module.exports ={
 
   },
   userAddress:async (parent,{userId,country,city,disctrict},{models}) => await models.address.create({userId,country,city,disctrict}),
-  
+  userDetails:async (parent,{userId},{models}) => await models.user.findOne({where:{id:userId}}),
+ 
 }
 

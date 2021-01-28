@@ -16,11 +16,8 @@ module.exports = function(sequelize, DataTypes) {
     },
     quantity: {
       type: DataTypes.INTEGER,
-      allowNull: true
-    },
-    price: {
-      type: DataTypes.DECIMAL(10,2),
-      allowNull: true
+      allowNull: true,
+      defaultValue: 1
     },
     cartId: {
       type: DataTypes.INTEGER,
