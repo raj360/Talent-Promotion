@@ -1,3 +1,4 @@
+
 export const addItemToCart = (cartItems, cartItemToAdd) => {
     const existingCartItem = cartItems.find(
       cartItem => cartItem.id === cartItemToAdd.id
@@ -11,6 +12,10 @@ export const addItemToCart = (cartItems, cartItemToAdd) => {
     } else {
       return [...cartItems, { ...cartItemToAdd, quantity: 1 }];
     }
+  };
+
+  export const increseCartQuantity = (cartItems,cartItemToReduce) =>{
+
   };
   
   export const reduceITemQuantity = (cartItems, cartItemToReduce) => {

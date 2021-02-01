@@ -15,19 +15,23 @@ const CustomerSideBar = () => {
 
       <div className="sideMenu line">
         <p >
-          <Link to="/me">Personal info</Link>
+          <Link to='/me'>Personal info</Link>
         </p>
          <p>
-          <Link to={`/orders/outgoing`}>Outgoing orders</Link>
+          <Link to='/outgoing'>Outgoing orders</Link>
         </p>
         <p>
-          <Link to={`/orders/incoming`}>Incoming orders</Link>
+          <Link to='/incoming'>Incoming orders</Link>
         </p>
          <p>
-          <Link to={`/orders/transcation`}>Transactions</Link>
+          <Link to='/transaction'>Transactions</Link>
         </p>
          <p>
-          <Link to={`/me/ads`}>My Ads</Link>
+          <Link to='/ads'>My Ads</Link>
+        </p>
+
+        <p>
+          <Link to='/new-add'>Create Ads</Link>
         </p>
       </div>
     </div>

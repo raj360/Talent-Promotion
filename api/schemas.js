@@ -6,7 +6,7 @@ scalar DateTime
 
  type Query{
    test:String!
-   testUser:User
+
  }
 
 
@@ -25,7 +25,7 @@ scalar DateTime
    decrementCart(userId:Int!,cartItemId:Int!):Cart
    removeFromCart(userId:Int!,cartItemId:Int!):Cart
    createOrder(userId:Int!,price:Float,quantity:Int!,cartItemId:Int!):Order,
-   userAddress(userId:Int!,country:String!,city:String!,disctrict:String!):Address,
+   userAddress(userId:Int!,country:String!,city:String!,district:String!):Address,
    userDetails(userId:Int!):User
  }
 
@@ -69,10 +69,10 @@ scalar DateTime
 type  Cart{
   id:Int!
   user:User
-  cartDetails:[CartDetails!]
+  cartItems:[CartItems!]
 }
 
-type CartDetails{
+type CartItems{
   id:Int!
   status:String!
   quantity:Int!
@@ -84,10 +84,10 @@ type CartDetails{
 type Order{
   id:Int!
   user:User
-  orderDetails:OrderDetails
+  orderItems:OrderItems
 }
 
-type OrderDetails{
+type OrderItems{
   id:Int!
   price:Int!
   quantity:Int!

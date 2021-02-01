@@ -41,10 +41,11 @@ module.exports ={
     }
 
   },
+  
   userSignIn:async (parent,{username,password,telephone},{models})  => await models.user.findOne({$or: [{password,telephone},{username,password}]}),
   createProduct:async (parent,{name,description,price,image,userId,categoryId},{models})=> {
 
-    //this if the file managment part of this system 
+  
     const { filename,createReadStream } = await image;
     const stream = createReadStream();
     const result = await storeFS({ stream, filename });
@@ -53,6 +54,7 @@ module.exports ={
    return  await models.product.create({name,description,price,imageUrl,userId,categoryId});
   },
   addToCart:async (parent,{userId,cartId,productId},{models})=> await models.cartItem.create({cartId,productId}),
+
   incrementCart:async (parent,{cartItemId,userId},{models}) => {
     await models.cartItem.increment('quantity',{where:{id:cartItemId}});
     return await models.cart.findOne({where:{userId}});
@@ -76,7 +78,8 @@ module.exports ={
     return await models.order.findOne({where: {id:orderId}});
 
   },
-  userAddress:async (parent,{userId,country,city,disctrict},{models}) => await models.address.create({userId,country,city,disctrict}),
+  userAddress:async (parent,{userId,country,city,district},{models}) => await models.address.create({userId,country,city,district}),
+
   userDetails:async (parent,{userId},{models}) => await models.user.findOne({where:{id:userId}}),
  
 }

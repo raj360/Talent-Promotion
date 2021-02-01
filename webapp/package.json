@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@apollo/client": "^3.3.7",
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
     "@fortawesome/react-fontawesome": "^0.1.11",
@@ -13,12 +14,14 @@
     "eslint-config-prettier": "^7.2.0",
     "eslint-plugin-prettier": "^3.3.1",
     "font-awesome": "^4.7.0",
+    "graphql": "^15.5.0",
     "joi-browser": "^13.4.0",
     "lodash": "^4.17.20",
     "node-sass": "^4.14.1",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-dropzone": "^11.2.4",
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
@@ -37,9 +40,9 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-"jshintConfig": {
-  "esversion": 6
-},
+  "jshintConfig": {
+    "esversion": 6
+  },
   "browserslist": {
     "production": [
       ">0.2%",

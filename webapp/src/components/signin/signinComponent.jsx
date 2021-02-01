@@ -5,18 +5,18 @@ import CustomButton from "../customButton/customButton";
 import FormInput from "../textInput/formInputComponent";
 const SignIn = (props) => {
   const [userCredetials, setUserCredentials] = useState({
-    email: "",
+    username: "",
     password: "",
   });
-  const { email, password } = userCredetials;
+  const { username, password } = userCredetials;
   const handleSubmit = (e) => {
     e.preventDefault();
     const { state } = props.location;
     window.location = state ? state.from.pathname : "/";
   };
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
-
     setUserCredentials({ ...userCredetials, [name]: value });
   };
   return (
@@ -27,19 +27,19 @@ const SignIn = (props) => {
       <h2 className="title">Sign In Here </h2>
       <form className="sign-up-form" onSubmit={handleSubmit}>
         <FormInput
-          type="email"
-          name="email"
-          value={email}
-          label="Email"
+          type="text"
+          value={username}
+          name="username"
+          label="Username"
           onChange={handleChange}
           required
         />
 
         <FormInput
+        value={username}
           type="password"
           name="password"
-          value={password}
-          label="Your Password"
+          label="Password"
           onChange={handleChange}
           required
         />

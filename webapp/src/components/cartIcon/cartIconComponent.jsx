@@ -25,3 +25,4 @@ const matStateToProps = createStructuredSelector({
 });
 
 export default connect(matStateToProps, mapDispachToPro)(CartIcon);
+

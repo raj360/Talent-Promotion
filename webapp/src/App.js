@@ -28,8 +28,14 @@ function App() {
         <Route path="/contact_us" component={ContactUs} />
         <Route path="/me" component={CustomerDetails} />
         <Route path="/products/:name" component={ProductDetails} />
+        <Route path="/outgoing" component={CustomerOrders} />
+        <Route path="/incoming" component={CustomerOrders} />
+        <Route path="/transaction" component={CustomerOrders} />
+        <Route path="/ads" component={CustomerOrders} />
+        <Route path="/new-add" component={CustomerDetails} />
+        
+        
 
-        <Route path="/orders/" component={CustomerOrders} />
       </Switch>
       <Footer />
     </div>

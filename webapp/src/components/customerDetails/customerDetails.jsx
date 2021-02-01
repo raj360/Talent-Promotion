@@ -7,27 +7,15 @@ import CustomButton from "../customButton/customButton";
 import "./customerDetails.scss";
 
 const CustomerDetails = (props) => {
-  // const data = [
-  //   {
-  //     name: "Dambi Stuart",
-  //     product: "ear Rings",
-  //     price: 12000,
-  //     status: "approved",
-  //   },
-  // ];
-  // const columns = [
-  //   { path: "name", label: "Name" },
-  //   { path: "product", label: "Product" },
-  //   { path: "price", label: "price" },
-  //   { path: "status", label: "status" },
-  // ];
+
 
   const [userCredetials, setUserCredentials] = useState({
     firstName: "Free",
     lastName: "Meghani",
     email: "data.mail@gmail.com",
-    Phone: "+24344568943",
-    address: "Kampala",
+    telephone: "+24344568943",
+    city: "Kampala",
+    district:'Nansana',
     country: "Uganda",
   });
 
@@ -46,8 +34,9 @@ const CustomerDetails = (props) => {
     firstName,
     lastName,
     email,
-    Phone,
-    address,
+    telephone,
+    city,
+    district,
     country,
   } = userCredetials;
   // const { username, email, contact, firstname, lastName } = customer;
@@ -65,6 +54,7 @@ const CustomerDetails = (props) => {
             name="email"
             value={email}
             label="email"
+            onChange={handleChange}
             required
           />
 
@@ -86,19 +76,28 @@ const CustomerDetails = (props) => {
 
           <FormInput
             type="text"
-            name="phone"
-            value={Phone}
-            label="conatct"
+            name="telephone"
+            value={telephone}
+            label="Telephone No"
             onChange={handleChange}
           />
 
           <FormInput
             type="text"
-            name="address"
-            value={address}
-            label="address"
+            name="city"
+            value={city}
+            label="city"
             onChange={handleChange}
           />
+
+          <FormInput
+            type="text"
+            name="district"
+            value={district}
+            label="district"
+            onChange={handleChange}
+          />
+
           <FormInput
             type="text"
             name="country"

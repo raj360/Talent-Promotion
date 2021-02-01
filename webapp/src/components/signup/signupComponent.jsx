@@ -10,29 +10,31 @@ const SignUp = (props) => {
   const [userCredetials, setUserCredentials] = useState({
     firstName: "",
     lastName: "",
-    email: "",
-    Phone: "",
-    address: "",
+    telephone: "",
+    username:"",
     password: "",
     country: "",
+    city: "",
+    district: "",
   });
   const {
+    username,
     firstName,
     lastName,
-    email,
-    Phone,
-    address,
+    city,
+    district,
+    telephone,
     password,
     country,
   } = userCredetials;
   const handleSubmit = (e) => {
     e.preventDefault();
-    const { state } = props.location;
-    window.location = state ? state.from.pathname : "/";
+    // const { state } = props.location;
+    // console.log(props.location)
+    window.location =  "/";
   };
   const handleChange = (e) => {
     const { name, value } = e.target;
-
     setUserCredentials({ ...userCredetials, [name]: value });
   };
   return (
@@ -42,6 +44,15 @@ const SignUp = (props) => {
       </p>
       <h2 className="title">Sign Up Here </h2>
       <form className="sign-up-form" onSubmit={handleSubmit}>
+         <FormInput
+          type="text"
+          name="username"
+          value={username}
+          label="Username"
+          onChange={handleChange}
+          required
+        />
+
         <FormInput
           type="text"
           name="firstName"
@@ -58,46 +69,51 @@ const SignUp = (props) => {
           onChange={handleChange}
           required
         />
+       
         <FormInput
-          type="email"
-          name="email"
-          value={email}
-          label="Email"
+          type="text"
+          name="telephone"
+          value={telephone}
+          label="Telephone No."
           onChange={handleChange}
           required
         />
         <FormInput
           type="text"
-          name="Phone"
-          value={Phone}
-          label="Contact"
+          name="city"
+          value={city}
+          label="City"
           onChange={handleChange}
           required
-        />
+        /> 
+
         <FormInput
           type="text"
-          name="address"
-          value={address}
-          label="Location"
+          name="district"
+          value={district}
+          label="District"
           onChange={handleChange}
           required
         />
-        <FormInput
-          type="password"
-          name="password"
-          value={password}
-          label="Your Password"
-          onChange={handleChange}
-          required
-        />
+
         <FormInput
           type="text"
           name="country"
           value={country}
-          label="country"
+          label="Country"
           onChange={handleChange}
           required
         />
+
+        <FormInput
+          type="password"
+          name="password"
+          value={password}
+          label="Password"
+          onChange={handleChange}
+          required
+        />
+       
         <CustomButton type="submit">SignUp</CustomButton>
       </form>
     </div>

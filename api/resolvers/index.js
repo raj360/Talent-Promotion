@@ -3,13 +3,13 @@ const Mutation = require('./mutation');
 const User = require('./user');
 const Product = require('./product');
 const Cart = require('./cart');
-const CartDetails = require('./cartDetails');
+const CartItems = require('./cartItems');
 
 module.exports ={
   Query,
   User,
   Product,
-  CartDetails,
+  CartItems,
   Cart,
   Mutation
 }
