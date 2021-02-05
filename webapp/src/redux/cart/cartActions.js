@@ -20,7 +20,6 @@ export const clearItemFromCart = (item) => ({
 });
 
 //CartManagment with apollo
-
 export const addToCart = (data) => ({type: CartActionTypes.ADD_TO_CART, payload: data});
 
 export const incrementCart = (data) => ({type: CartActionTypes.INCREMENT_CART, payload: data});

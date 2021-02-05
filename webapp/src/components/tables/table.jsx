@@ -13,7 +13,9 @@ function TableHeader({ columns }) {
   );
 }
 
+
 const TableBody = ({ data, columns }) => {
+
   const renderCell = (item, column) => {
     if (column.content) return column.content(item);
     return _.get(item, column.path);
@@ -44,5 +46,6 @@ const Table = ({ data, columns }) => {
     </div>
   );
 };
+
 
 export default Table;

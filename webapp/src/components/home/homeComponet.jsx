@@ -18,9 +18,7 @@ const HomePage = () => {
   const pageSize = 12;
 
   const  filterViaCategory = (arr, category) => {
-
   return arr.filter(obj => obj.category.name === category);
-
   }
 
   const [category,setCategory] = useState('');
@@ -29,7 +27,6 @@ const HomePage = () => {
 
 
   const [nav, setNav] = useState(false);
-
 
   const showSidebar = () => setNav(!nav);
 

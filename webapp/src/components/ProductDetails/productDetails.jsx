@@ -13,7 +13,7 @@ const ProductDetails = ({ addItem, match }) => {
 
   const [product, setProduct] = useState({});
   const pro_b = getSingle(p_name);
-  console.log(pro_b);
+
   useEffect(() => {
     const getProduct = async () => {
       const pro = await getSingle(p_name);
