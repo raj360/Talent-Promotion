@@ -2,7 +2,6 @@ const {ForbiddenError,AuthenticationError} = require('apollo-server-express');
 const fs = require('fs');
 const path = require('path');
 
-
 const storeFS =async ({ stream, filename }) => {
     const uploadDir = '../public/images/';
     filename = `${Date.now()}-${filename.toLowerCase() }`
@@ -19,7 +18,6 @@ const storeFS =async ({ stream, filename }) => {
             .on('finish', () => resolve({ filename }))
     );
 }
-
 
 module.exports ={
   test:()=> 'Testing if this is working just fine',
@@ -45,7 +43,6 @@ module.exports ={
   userSignIn:async (parent,{username,password,telephone},{models})  => await models.user.findOne({$or: [{password,telephone},{username,password}]}),
   createProduct:async (parent,{name,description,price,image,userId,categoryId},{models})=> {
 
-  
     const { filename,createReadStream } = await image;
     const stream = createReadStream();
     const result = await storeFS({ stream, filename });
@@ -54,7 +51,7 @@ module.exports ={
    return  await models.product.create({name,description,price,imageUrl,userId,categoryId});
   },
   addToCart:async (parent,{userId,cartId,productId},{models})=> await models.cartItem.create({cartId,productId}),
-
+  
   incrementCart:async (parent,{cartItemId,userId},{models}) => {
     await models.cartItem.increment('quantity',{where:{id:cartItemId}});
     return await models.cart.findOne({where:{userId}});
