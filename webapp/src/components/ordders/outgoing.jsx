@@ -2,6 +2,7 @@ import React from "react";
 
 import CustomerSideBar from "../customerSideMenu/customerSide";
 import OrderItem from "../orderItem/orderItem";
+import OutGoingOrderItem from "../orderItem/outgoingorderitem";
 
 import { getAllOrders } from "../../services/demoData";
 import CustomButton from "../customButton/customButton";
@@ -18,14 +19,12 @@ const OutGoing = ({ match }) => {
       <div className="tabledata">
         <div className="data">
           {orders.map((item) => (
-            <OrderItem key={item.id} item={item} />
+            <OutGoingOrderItem key={item.id} item={item} />
           ))}
         </div>
         <div
          style={{margin:20}}
         >
-          <button style={styles.button1}>Order</button>
-           <button style={styles.button2}>Cancle</button>
         </div>
 
       </div>

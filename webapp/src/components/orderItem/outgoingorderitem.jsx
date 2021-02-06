@@ -8,7 +8,7 @@ const test3= require('../../assets/image13.jpg');
 const test4 = require('../../assets/image14.jpg');
 const test5 = require('../../assets/image15.jpg');
 
-const OrderItem = ({ item }) => {
+const OutGoingOrderItem = ({ item }) => {
   const [items,setItems] = React.useState( [
       {id: 1, title: 'item #1',test:test1},
       {id: 2, title: 'item #2',test:test1},
@@ -29,23 +29,21 @@ const OrderItem = ({ item }) => {
           </div>
         ))}
        </Carousel>
-
-        {/* <img style={{borderRadius:5}} src={require(`../../assets/${image}`)} alt="" /> */}
       </div>
       <span className="name">{`ORDER-40394`}</span>
       <span className="quantity">
-        <span className="value">{items.length}</span>
+        <span className="value">{`(${items.length})`}</span>
       </span>
       <span className="price">{Number(items.length) * price}</span>
-
+        <span>{(new Date().toLocaleString())}</span>
         <button style={styles.button2}>Cancle</button>
     </div>
   );
 };
 
-export default OrderItem;
+export default OutGoingOrderItem;
 
 
 const styles = {
-  button2:{margin:5,padding:10,width:100,color:'black',borderRadius:5,fontWeight:800,marginRight: 80}
+  button2:{margin:5,padding:10,width:100,color:'black',borderRadius:5,fontWeight:800,marginRight: 50}
 }

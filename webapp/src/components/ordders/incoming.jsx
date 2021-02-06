@@ -2,6 +2,7 @@ import React from "react";
 
 import CustomerSideBar from "../customerSideMenu/customerSide";
 import OrderItem from "../orderItem/orderItem";
+import IncomingOrderItem from '../orderItem/incomingorderitem';
 
 import { getAllOrders } from "../../services/demoData";
 import CustomButton from "../customButton/customButton";
@@ -20,7 +21,7 @@ const Incoming = ({ match }) => {
       <div className="tabledata">
         <div className="data">
           {orders.map((item) => (
-            <OrderItem key={item.id} item={item} />
+            <IncomingOrderItem key={item.id} item={item} />
           ))}
         </div>
         {/* <div
