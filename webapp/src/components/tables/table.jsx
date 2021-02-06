@@ -13,7 +13,6 @@ function TableHeader({ columns }) {
   );
 }
 
-
 const TableBody = ({ data, columns }) => {
 
   const renderCell = (item, column) => {

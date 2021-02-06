@@ -12,8 +12,15 @@ import Footer from "./components/footer/footerComponent";
 import CustomerDetails from "./components/customerDetails/customerDetails";
 import ContactUs from "./components/contactus/contactus";
 import CustomerOrders from "./components/ordders/orders";
+import IncomingOrders from "./components/ordders/incoming";
+import OutGoingOrders from "./components/ordders/outgoing";
+import MyAds from "./components/ordders/myads";
+import Transaction from "./components/ordders/transaction";
+import CreateAds from "./components/customerDetails/createAds";
+
 
 import "./App.css";
+
 
 function App() {
   return (
@@ -28,11 +35,11 @@ function App() {
         <Route path="/contact_us" component={ContactUs} />
         <Route path="/me" component={CustomerDetails} />
         <Route path="/products/:name" component={ProductDetails} />
-        <Route path="/outgoing" component={CustomerOrders} />
-        <Route path="/incoming" component={CustomerOrders} />
-        <Route path="/transaction" component={CustomerOrders} />
-        <Route path="/ads" component={CustomerOrders} />
-        <Route path="/new-add" component={CustomerDetails} />
+        <Route path="/outgoing" component={OutGoingOrders} />
+        <Route path="/incoming" component={IncomingOrders} />
+        <Route path="/transaction" component={Transaction} />
+        <Route path="/ads" component={MyAds} />
+        <Route path="/new-add" component={CreateAds} />
         
         
 

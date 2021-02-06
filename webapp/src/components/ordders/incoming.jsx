@@ -2,15 +2,16 @@ import React from "react";
 
 import CustomerSideBar from "../customerSideMenu/customerSide";
 import OrderItem from "../orderItem/orderItem";
-import GridViewAds from "../orderItem/gridviewads"
 
 import { getAllOrders } from "../../services/demoData";
 import CustomButton from "../customButton/customButton";
 import "./orders.scss";
 
-const MyAds = ({ match }) => {
+const Incoming = ({ match }) => {
   const orders = getAllOrders();
-  
+  console.log(match)
+
+
   return (
     <div className="order-details">
       <div className="menu">
@@ -19,7 +20,7 @@ const MyAds = ({ match }) => {
       <div className="tabledata">
         <div className="data">
           {orders.map((item) => (
-            <GridViewAds key={item.id} item={item} />
+            <OrderItem key={item.id} item={item} />
           ))}
         </div>
         {/* <div
@@ -41,4 +42,4 @@ const styles = {
   button2:{margin:20,padding:10,width:100,color:'black',borderRadius:5,fontWeight:800}
 }
 
-export default MyAds;
+export default Incoming;

@@ -19,7 +19,7 @@ const CheckoutPage = ({ cartItems, total }) => (
     </Link>
     <div
       style={{padding:20,borderRadius:5}} 
-    className="checkout-page">
+      className="checkout-page">
       <div className="checkout-header">
         <div className="header-block">
           <span>image</span>
