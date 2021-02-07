@@ -23,9 +23,9 @@ ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <PersistGate persistor={persistor}>
-          <ApolloProvider client={client} >
-             <App />
-          </ApolloProvider>
+        <ApolloProvider client={client} >
+         <App />
+        </ApolloProvider>
       </PersistGate>
     </BrowserRouter>
   </Provider>,

@@ -4,15 +4,15 @@ import { createStructuredSelector } from "reselect";
 import { NavLink, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
-
 import { selectCartHidden } from "../../redux/cart/cartSeletor";
+import {selectorIsLoggedIn} from "../../redux/user/userSelector";
 import CartIcon from "../cartIcon/cartIconComponent";
 import CartDropDown from "../cartDropDown/cartDropDownComponent";
 import { navs } from "../../services/navElements";
 
 import "./headerStyles.scss";
 
-const Header = ({ hidden }) => {
+const Header = ({ hidden,isLoggedIn }) => {
   const [nav, setNav] = useState(false);
 
   const showSidebar = () => setNav(!nav);
@@ -61,6 +61,18 @@ const Header = ({ hidden }) => {
         <NavLink className="option" to="/about_us">
           About Us
         </NavLink>
+
+       
+
+       {
+         (isLoggedIn) ?
+         (
+        <NavLink className="option" to="/me">
+          Profile
+        </NavLink>
+         )
+         :(
+       <div>
         <NavLink className="option" to="/signup">
           SignUp
         </NavLink>
@@ -68,13 +80,12 @@ const Header = ({ hidden }) => {
         <NavLink className="option" to="/login">
           Login
         </NavLink>
+       </div>
+         )
+       }
 
         <NavLink className="option" to="/contact_us">
           Contact Us
-        </NavLink>
-
-        <NavLink className="option" to="/me">
-          Profile
         </NavLink>
 
         <CartIcon />
@@ -85,8 +96,10 @@ const Header = ({ hidden }) => {
   );
 };
 
+
 const mapstateToProps = createStructuredSelector({
   hidden: selectCartHidden,
+  isLoggedIn:selectorIsLoggedIn,
 });
 
 export default connect(mapstateToProps)(Header);
