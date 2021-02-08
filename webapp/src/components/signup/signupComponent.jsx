@@ -1,13 +1,24 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
+import {useMutation} from '@apollo/client';
 import CustomButton from "../customButton/customButton";
 import FormInput from "../textInput/formInputComponent";
+import {USER_SIGN_UP}   from '../graphql/mutation';
 
 import "./signupStyles.scss";
 
 const SignUp = (props) => {
-  const [userCredetials, setUserCredentials] = useState({
+
+ const [userSignUp,{loading}] = useMutation(USER_SIGN_UP,{
+   onCompleted: data => {
+     if(data.userSignUp){
+       window.location =  "/login";
+     }
+   }
+ });
+
+
+  const [data, setData] = useState({
     firstName: "",
     lastName: "",
     telephone: "",
@@ -26,16 +37,14 @@ const SignUp = (props) => {
     telephone,
     password,
     country,
-  } = userCredetials;
+  } = data;
   const handleSubmit = (e) => {
     e.preventDefault();
-    // const { state } = props.location;
-    // console.log(props.location)
-    window.location =  "/";
+     userSignUp({variables:{...data}})
   };
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setUserCredentials({ ...userCredetials, [name]: value });
+    setData({ ...data, [name]: value });
   };
   return (
     <div className="content">
@@ -43,6 +52,11 @@ const SignUp = (props) => {
         I already have an account <Link style={{color:'#000'}} to="/login">login</Link>
       </p>
       <h2 className="title">Sign Up Here </h2>
+
+      {
+         loading && <p>Loadig ...</p>
+       }
+
       <form className="sign-up-form" onSubmit={handleSubmit}>
          <FormInput
           type="text"

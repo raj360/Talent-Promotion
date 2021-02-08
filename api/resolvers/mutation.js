@@ -21,12 +21,14 @@ const storeFS =async ({ stream, filename }) => {
 
 module.exports ={
   test:()=> 'Testing if this is working just fine',
-  userSignUp:async (parent,{username,firstName,lastName,password,telephone},{models})=> {
+  userSignUp:async (parent,{username,firstName,lastName,password,telephone,country,city,district},{models})=> {
    
     const  user  = await models.user.create({username,firstName,lastName,password,telephone});
 
     if(user.id){
-     const cart = await models.cart.create({userId:user.id});
+    let  userId= user.id;
+     const cart = await models.cart.create({userId});
+     await models.address.create({userId,country,city,district});
 
      if(cart){
        return user;

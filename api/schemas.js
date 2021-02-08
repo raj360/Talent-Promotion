@@ -1,11 +1,23 @@
 const {gql} = require('apollo-server-express');
 
+/**
+ * 
+
+mutation userSignUp($username: String!, $firstName: String!, $lastName: String!, $password: String!, $telephone: String!) {
+  userSignUp(username: $username, firstName: $firstName, lastName: $lastName, password: $password, telephone: $telephone) {
+    id
+  }
+}
+
+ */
+
 module.exports =gql`
 
 scalar DateTime
 
  type Query{
    test:String!
+   products:[Product!]
 
  }
 
@@ -16,7 +28,7 @@ scalar DateTime
  
  type Mutation{
    test:String!
-   userSignUp(username:String!,firstName:String!,lastName:String!,password:String!,telephone:String!):User!
+   userSignUp(username:String!,firstName:String!,lastName:String!,password:String!,telephone:String!,country:String!,city:String!,district:String!):User!
    userSignIn(username:String!,telephone:String!,password:String!):User
    createProduct(name:String!,description:String!,price:Float!,image:Upload!,userId:Int!,categoryId:Int!):Product
    addToCart(cartId:Int!,productId:Int!):Cart
@@ -27,6 +39,8 @@ scalar DateTime
    userAddress(userId:Int!,country:String!,city:String!,district:String!):Address,
    userDetails(userId:Int!):User
  }
+
+
 
 
  type User{

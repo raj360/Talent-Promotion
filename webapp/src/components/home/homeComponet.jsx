@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-
+import {useQuery} from '@apollo/client';
 import { getAllCrafts } from "../../services/demoData";
 import ProductItem from "../singleItem/singleComponent";
 import { paginate } from "../../services/pagiantion";
 import Pagiantion from "../pagination/pagination";
-
+import {PRODUCTS} from '../graphql/query'
 import { sideBar } from "../../services/navElements";
 
 import "./homeStyples.scss";
@@ -17,14 +17,17 @@ const HomePage = () => {
   const allCrafts = getAllCrafts();
   const pageSize = 12;
 
+  const {loading,error,data} = useQuery(PRODUCTS)
+  const [products,setProducts] = useState([])
   const  filterViaCategory = (arr, category) => {
   return arr.filter(obj => obj.category.name === category);
   }
 
+
+
   const [category,setCategory] = useState('');
 
-  const [pileColor,setPileColor] = useState('##00FF89')
-
+  
 
   const [nav, setNav] = useState(false);
 
@@ -34,13 +37,19 @@ const HomePage = () => {
   // const handleCategoryChange = (ele) =>setCategory(ele);
   const handlePageChange = (page) => setCurrentPage(page);
  
+   console.log(products)
+
   const sorted = () => {
        if(category === '') {
-         return paginate(allCrafts, currentPage, pageSize);
+         return paginate(products, currentPage, pageSize);
        }else{
-         return paginate(filterViaCategory(getAllCrafts(),category),currentPage,pageSize);
+         return paginate(filterViaCategory(products,category),currentPage,pageSize);
        }
   }
+
+  useEffect(() => {
+    if(data) setProducts(data.products)
+  })
 
   return (
     <>

@@ -14,7 +14,9 @@ const resolvers = require('./resolvers');
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  context:{models}
+  context:{models},
+  introspection: true,
+  playground: true,
 });
 
 const app = express();
@@ -25,7 +27,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(logger('dev'));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public/images/')));
 app.use('/uploads',express.static('uploads'));
 
 module.exports = {app,server};

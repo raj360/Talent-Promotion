@@ -13,7 +13,7 @@ const ProductItem = ({ item, addItem, history }) => {
     <div className="item">
       <div className="image">
         <Link to={`/products/${item.name}`}>
-          <img src={require(`../../assets/${item.image}`)} alt="" />
+          <img src={`http://localhost:4000/${item.imageUrl}`} alt="Image not found" />
         </Link>
       </div>
       <div>
