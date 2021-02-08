@@ -1,32 +1,32 @@
 import React, { useState } from "react";
-
+import {createStructuredSelector} from 'reselect';
 import CustomerSideBar from "../customerSideMenu/customerSide";
 import FormInput from "../textInput/formInputComponent";
 import CustomButton from "../customButton/customButton";
-
+import {connect} from 'react-redux';
+import {selectorUser} from '../../redux/user/userSelector';
 import "./customerDetails.scss";
 
-const CustomerDetails = (props) => {
+const CustomerDetails = ({location,user}) => {
 
 
   const [userCredetials, setUserCredentials] = useState({
-    firstName: "Free",
-    lastName: "Meghani",
-    email: "data.mail@gmail.com",
-    telephone: "+24344568943",
-    city: "Kampala",
-    district:'Nansana',
-    country: "Uganda",
+    firstName: "",
+    lastName: "",
+    email: "",
+    telephone: "",
+    city: "",
+    district:'',
+    country: "",
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const { state } = props.location;
+    const { state } = location;
     window.location = state ? state.from.pathname : "/";
   };
   const handleChange = (e) => {
     const { name, value } = e.target;
-
     setUserCredentials({ ...userCredetials, [name]: value });
   };
 
@@ -35,11 +35,14 @@ const CustomerDetails = (props) => {
     lastName,
     email,
     telephone,
-    city,
-    district,
-    country,
-  } = userCredetials;
-  // const { username, email, contact, firstname, lastName } = customer;
+    address
+  } = user;
+
+   const {city, district,country} = address;
+
+  //  React.useEffect(() => {
+  //    setUserCredentials(firstName,lastName,email,telephone,address,city, district,country)
+  //  })
 
   return (
     <div className="detail">
@@ -49,20 +52,11 @@ const CustomerDetails = (props) => {
 
       <div className="tabledata">
         <form id="form-detail" onSubmit={handleSubmit}>
-          <FormInput
-            type="text"
-            name="email"
-            value={email}
-            label="email"
-            onChange={handleChange}
-            required
-          />
-
+          
           <FormInput
             type="text"
             name="firstName"
             value={firstName}
-            label="first name"
             onChange={handleChange}
           />
 
@@ -70,7 +64,6 @@ const CustomerDetails = (props) => {
             type="text"
             name="lastName"
             value={lastName}
-            label="last name"
             onChange={handleChange}
           />
 
@@ -78,7 +71,6 @@ const CustomerDetails = (props) => {
             type="text"
             name="telephone"
             value={telephone}
-            label="Telephone No"
             onChange={handleChange}
           />
 
@@ -87,6 +79,7 @@ const CustomerDetails = (props) => {
             name="city"
             value={city}
             label="city"
+             readOnly
             onChange={handleChange}
           />
 
@@ -94,7 +87,7 @@ const CustomerDetails = (props) => {
             type="text"
             name="district"
             value={district}
-            label="district"
+            readOnly
             onChange={handleChange}
           />
 
@@ -102,7 +95,7 @@ const CustomerDetails = (props) => {
             type="text"
             name="country"
             value={country}
-            label="country"
+            readOnly
             onChange={handleChange}
           />
         </form>
@@ -113,4 +106,9 @@ const CustomerDetails = (props) => {
   );
 };
 
-export default CustomerDetails;
+const mapStateToProps = createStructuredSelector({
+  user:selectorUser
+})
+
+
+export default  connect(mapStateToProps)(CustomerDetails);

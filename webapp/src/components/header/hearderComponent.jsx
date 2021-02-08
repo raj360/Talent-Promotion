@@ -5,17 +5,23 @@ import { NavLink, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { selectCartHidden } from "../../redux/cart/cartSeletor";
-import {selectorIsLoggedIn} from "../../redux/user/userSelector";
+import {selectorIsLoggedIn,selectorUser} from "../../redux/user/userSelector";
+import {logOutUser} from '../../redux/user/userActions';
 import CartIcon from "../cartIcon/cartIconComponent";
 import CartDropDown from "../cartDropDown/cartDropDownComponent";
 import { navs } from "../../services/navElements";
 
 import "./headerStyles.scss";
 
-const Header = ({ hidden,isLoggedIn }) => {
+const Header = ({ hidden,isLoggedIn ,logOutUser,user}) => {
   const [nav, setNav] = useState(false);
 
   const showSidebar = () => setNav(!nav);
+
+   
+        console.log('Testing if is logged in ')
+        console.log(user)
+       
 
   return (
     <div className="header">
@@ -62,27 +68,35 @@ const Header = ({ hidden,isLoggedIn }) => {
           About Us
         </NavLink>
 
-       
-
+    
        {
          (isLoggedIn) ?
          (
+       <div>
         <NavLink className="option" to="/me">
           Profile
         </NavLink>
+
+        <NavLink className="option" to="/login"  onClick={() => logOutUser()}>
+          Logout
+        </NavLink>
+       </div>
          )
-         :(
+         :
+         (
        <div>
         <NavLink className="option" to="/signup">
           SignUp
         </NavLink>
-
+      
         <NavLink className="option" to="/login">
           Login
         </NavLink>
        </div>
          )
        }
+
+
 
         <NavLink className="option" to="/contact_us">
           Contact Us
@@ -100,6 +114,15 @@ const Header = ({ hidden,isLoggedIn }) => {
 const mapstateToProps = createStructuredSelector({
   hidden: selectCartHidden,
   isLoggedIn:selectorIsLoggedIn,
+  user:selectorUser
 });
 
-export default connect(mapstateToProps)(Header);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    logOutUser: () => {
+      dispatch(logOutUser());
+    }
+  }
+}
+
+export default connect(mapstateToProps,mapDispatchToProps)(Header);

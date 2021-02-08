@@ -9,7 +9,6 @@ scalar DateTime
 
  }
 
-
  type Response {
    error:Boolean
    message:String!
@@ -17,7 +16,7 @@ scalar DateTime
  
  type Mutation{
    test:String!
-   userSignUp(username:String!,firstName:String!,lastName:String!,password:String!,telephone:String!):User
+   userSignUp(username:String!,firstName:String!,lastName:String!,password:String!,telephone:String!):User!
    userSignIn(username:String!,telephone:String!,password:String!):User
    createProduct(name:String!,description:String!,price:Float!,image:Upload!,userId:Int!,categoryId:Int!):Product
    addToCart(cartId:Int!,productId:Int!):Cart

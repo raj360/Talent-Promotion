@@ -40,7 +40,7 @@ module.exports ={
 
   },
   
-  userSignIn:async (parent,{username,password,telephone},{models})  => await models.user.findOne({$or: [{password,telephone},{username,password}]}),
+  userSignIn:async (parent,{username,password,telephone},{models})  => await models.user.findOne({where:{username,password}}),
   createProduct:async (parent,{name,description,price,image,userId,categoryId},{models})=> {
 
     const { filename,createReadStream } = await image;
