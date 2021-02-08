@@ -2,9 +2,11 @@ import React from "react";
 
 import "./cartItemStyles.scss";
 
-const CartItem = ({ item: { image, price, name, quantity } }) => (
+import {BASE_URL} from '../../utils';
+
+const CartItem = ({ item: { imageUrl, price, name, quantity } }) => (
   <div className="cart-item">
-    <img src={require(`../../assets/${image}`)} alt="item" />
+    <img src={BASE_URL+imageUrl} alt="item" />
     <div className="item-details">
       <span className="name">{name}</span>
       <span className="price">

@@ -9,6 +9,7 @@
       display: none;
     }
     .image {
+      marginTop:100vw;
       width: 40vw;
       height: 40vw;
       background-color: rgb(247, 249, 249);
@@ -26,17 +27,24 @@
   .detail {
     margin-left: 5vw;
     width: 45vw;
+    margin-top:0vw;
+    height: 30vw;
     display: flex;
     flex-direction: column;
     background-color: rgb(250, 248, 248);
 
     .properties {
       margin: auto;
-      //   margin-top: 5vw;
+        margin-top: 5vw;
       //   margin-left: 5vw;
       //   margin-right: 5vw;
       box-sizing: border-box;
       h4 {
+        font-weight: bold;
+        text-transform: uppercase;
+        padding: 10px;
+      }
+       h5 {
         font-weight: bold;
         text-transform: uppercase;
         padding: 10px;
@@ -93,6 +101,13 @@
           margin: 10px;
           text-transform: uppercase;
         }
+
+         h5 {
+          font-weight: normal;
+          margin: 10px;
+          text-transform: uppercase;
+        }
+
       }
       .image {
         width: 100vw;

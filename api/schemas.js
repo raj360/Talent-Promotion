@@ -18,6 +18,7 @@ scalar DateTime
  type Query{
    test:String!
    products:[Product!]
+   product(productId:Int!):Product
 
  }
 

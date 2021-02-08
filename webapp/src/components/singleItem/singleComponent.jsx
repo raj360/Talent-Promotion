@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 import CustomButton from "../customButton/customButton";
-
+import {BASE_URL} from '../../utils';
 import { addItem } from "../../redux/cart/cartActions";
 
 import "./singleItemStyles.scss";
@@ -12,8 +12,8 @@ const ProductItem = ({ item, addItem, history }) => {
   return (
     <div className="item">
       <div className="image">
-        <Link to={`/products/${item.name}`}>
-          <img src={`http://localhost:4000/${item.imageUrl}`} alt="Image not found" />
+        <Link to={`/products/${item.id}`}>
+          <img src={BASE_URL+item.imageUrl} alt="Image not found" />
         </Link>
       </div>
       <div>
@@ -30,6 +30,7 @@ const ProductItem = ({ item, addItem, history }) => {
     </div>
   );
 };
+
 
 const mapDispatchToProps = (dispatch) => ({
   addItem: (item) => dispatch(addItem(item)),

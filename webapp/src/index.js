@@ -12,11 +12,15 @@ import "bootstrap/dist/css/bootstrap.css";
 import "font-awesome/css/font-awesome.min.css";
 
 
+
+
+
+
+
 const client = new ApolloClient({
   uri: 'http://localhost:4000/talent-promotion/api/v1',
   cache: new InMemoryCache()
 });
-
 
 
 ReactDOM.render(

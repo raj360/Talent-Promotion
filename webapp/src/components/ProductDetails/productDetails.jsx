@@ -2,72 +2,78 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 
 import { addItem } from "../../redux/cart/cartActions";
-
-import { getSingle } from "../../services/demoData";
+import {useQuery} from '@apollo/client';
 import CustomButton from "../customButton/customButton";
-
+import {BASE_URL} from '../../utils';
 import "./productDetails.scss";
+import {PRODUCT} from '../graphql/query'
 
 const ProductDetails = ({ addItem, match }) => {
-  const p_name = match.params.name;
+  const productId = Number(match.params.productId);
+
+  const [t,setT]  = React.useState(true)
+  const {loading,error,data}  = useQuery(PRODUCT,{variables:{productId}})
 
   const [product, setProduct] = useState({});
-  const pro_b = getSingle(p_name);
+
 
   useEffect(() => {
-    const getProduct = async () => {
-      const pro = await getSingle(p_name);
-      setProduct(pro);
-    };
-    getProduct();
-  }, [p_name]);
+    if(data){
+      setProduct(data.product)
+    }
+  }, [productId]);
 
-  const { image, price, name } = pro_b;
+
+
 
   return (
-    <div className="details">
+    <>  
+    <div>
+      {loading && <p>Loading ...</p>}
+    </div>
+
+    {
+    
+     data &&  (
+       (
+  <div className="details">
       <div className="product">
-        <div className="properties">
-          <h1>{name}</h1>
-          <h4>Ugx:{price}</h4>
-        </div>
         <div className="image">
-          <img src={require(`../../assets/${image}`)} alt="" />
+          <img src={BASE_URL+data.product.imageUrl} alt="" />
         </div>
       </div>
+
       <div className="detail">
         <div className="properties">
-          <h4>{name}</h4>
-          <h4>Ugx:{price}</h4>
+         <div style={{margin:20}}>
+          <h4>{data.product.name}</h4>
+          <h5 style={{marginLeft:'25%'}}>{data.product.category.name}</h5>
+          <p>
+           {
+             data.product.description
+           }
+          </p>
+        </div>
+          
+          <h4>Ugx:{data.product.price}</h4>
 
-          <div className="button">
-            <CustomButton onClick={() => addItem(product)}>
+          <div>
+            <CustomButton 
+            style={{marginLeft:'25%'}}
+             onClick={() => addItem(product)}>
               Add To Cart
             </CustomButton>
           </div>
         </div>
 
-        <div className="button">
-          <CustomButton onClick={() => addItem(product)}>
-            Add To Cart
-          </CustomButton>
-        </div>
-
-        <div className="desc">
-          <h3>About</h3>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci,
-            est libero molestias corporis quisquam sed ea quam provident cumque
-            dolor.
-          </p>
-        </div>
       </div>
-      <div className="button">
-        <CustomButton onClick={() => addItem(product)}>
-          Add To Cart
-        </CustomButton>
-      </div>
+    
     </div>
+      )
+     )
+    }
+
+    </>
   );
 };
 

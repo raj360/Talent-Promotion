@@ -24,10 +24,10 @@ const HomePage = () => {
   }
 
 
-
   const [category,setCategory] = useState('');
 
   
+
 
   const [nav, setNav] = useState(false);
 

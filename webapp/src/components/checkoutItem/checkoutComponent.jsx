@@ -7,14 +7,15 @@ import {
   removeItem,
 } from "../../redux/cart/cartActions";
 
+import {BASE_URL} from '../../utils';
 import "./checkoutStyles.scss";
 
 const CheckoutItem = ({ item, clearItem, addItem, removeItem }) => {
-  const { name, image, quantity, price } = item;
+  const { name, imageUrl, quantity, price } = item;
   return (
     <div className="checkout-item" style={{width:'95%'}}>
       <div className="image-container">
-        <img style={{ width:'100%',margin:5,borderRadius:5}} src={require(`../../assets/${image}`)} alt="" />
+        <img style={{ width:'100%',height:'80%',margin:5,borderRadius:5}} src={BASE_URL+imageUrl} alt="" />
       </div>
       <span className="name">{name}</span>
       <span className="quantity">
@@ -27,6 +28,7 @@ const CheckoutItem = ({ item, clearItem, addItem, removeItem }) => {
         </div>
       </span>
       <span className="price">{price}</span>
+
 
      <div style={{backgroundColor:'#000',borderRadius:200,alignItems: 'center',justifyContent:'center',marginRight:30}}> 
        <div style={{color:'#FFF',margin:5,marginRight:15}} className="remove-button" onClick={() => clearItem(item)}>

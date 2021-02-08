@@ -34,7 +34,7 @@ function App() {
         <Route path="/about_us" component={AboutUs} />
         <Route path="/contact_us" component={ContactUs} />
         <Route path="/me" component={CustomerDetails} />
-        <Route path="/products/:name" component={ProductDetails} />
+        <Route path="/products/:productId" component={ProductDetails} />
         <Route path="/outgoing" component={OutGoingOrders} />
         <Route path="/incoming" component={IncomingOrders} />
         <Route path="/transaction" component={Transaction} />
