@@ -17,7 +17,6 @@ const SignUp = (props) => {
    }
  });
 
-
   const [data, setData] = useState({
     firstName: "",
     lastName: "",

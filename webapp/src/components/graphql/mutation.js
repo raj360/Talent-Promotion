@@ -8,6 +8,61 @@ mutation userSignUp($username: String!, $firstName: String!, $lastName: String!,
 }
 `;
 
+export const CREATE_AD = gql`
+
+mutation createProduct($name: String!, $description: String!, $price: Float!, $image: Upload!, $userId: Int!, $categoryId: Int!) {
+  createProduct(name: $name, description: $description, price: $price, image: $image, userId: $userId, categoryId: $categoryId) {
+    id
+  }
+}
+
+
+`
+
+export const USER_DETAILS = gql`
+
+mutation userDetails($userId: Int!) {
+  userDetails(userId: $userId) {
+    id
+    firstName
+    lastName
+    telephone
+    username
+    address {
+      id
+      city
+      district
+    }
+    cart {
+      id
+      cartItems {
+        id
+        product {
+          id
+          name
+          imageUrl
+          price
+        }
+        quantity
+        createdAt
+      }
+    }
+    products {
+      id
+      name
+      description
+      price
+      imageUrl
+      category {
+        name
+      }
+    }
+  }
+}
+
+
+`;
+
 export const  USER_SIGN_IN = gql`
 mutation userSignIn($username: String!, $telephone: String!, $password: String!) {
   userSignIn(username: $username, telephone: $telephone, password: $password) {

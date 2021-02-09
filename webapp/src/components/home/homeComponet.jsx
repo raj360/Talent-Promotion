@@ -23,11 +23,9 @@ const HomePage = () => {
   return arr.filter(obj => obj.category.name === category);
   }
 
-
-  const [category,setCategory] = useState('');
-
   
 
+  const [category,setCategory] = useState('');
 
   const [nav, setNav] = useState(false);
 
@@ -115,9 +113,15 @@ const HomePage = () => {
 
         <div className="items">
           
-          {sorted().map((item) => (
+          {
+            (sorted().length === 0) ?
+            (
+              <h4>Server is down or There are no products added to the system .... </h4>
+            ): 
+            (sorted().map((item) => (
             <ProductItem key={item.id} item={item} />
-          ))}
+          )))
+          }
         </div>
       </div>
       <div className="pages">

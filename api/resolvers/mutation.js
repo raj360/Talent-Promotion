@@ -41,10 +41,9 @@ module.exports ={
     }
 
   },
-  
   userSignIn:async (parent,{username,password,telephone},{models})  => await models.user.findOne({where:{username,password}}),
   createProduct:async (parent,{name,description,price,image,userId,categoryId},{models})=> {
-
+   console.log({name,description,price,image,userId,categoryId})
     const { filename,createReadStream } = await image;
     const stream = createReadStream();
     const result = await storeFS({ stream, filename });

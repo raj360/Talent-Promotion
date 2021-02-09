@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-
 import { addItem } from "../../redux/cart/cartActions";
 import {useQuery} from '@apollo/client';
 import CustomButton from "../customButton/customButton";
@@ -23,7 +22,7 @@ const ProductDetails = ({ addItem, match }) => {
     }
   }, [productId]);
 
-
+console.log(data)
 
 
   return (
@@ -53,10 +52,10 @@ const ProductDetails = ({ addItem, match }) => {
              data.product.description
            }
           </p>
-        </div>
-          
-          <h4>Ugx:{data.product.price}</h4>
-
+          </div>
+         <h4>Ugx:{data.product.price}</h4>
+          <p>Ad by: { `${data.product.owner.firstName} - ${data.product.owner.lastName} ${data.product.owner.telephone}` }</p>
+          <p></p>
           <div>
             <CustomButton 
             style={{marginLeft:'25%'}}

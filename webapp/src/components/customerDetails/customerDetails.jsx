@@ -1,16 +1,30 @@
 import React, { useState } from "react";
+import {useMutation,useQuery} from '@apollo/client';
+import {USER} from '../graphql/query';
 import {createStructuredSelector} from 'reselect';
 import CustomerSideBar from "../customerSideMenu/customerSide";
 import FormInput from "../textInput/formInputComponent";
 import CustomButton from "../customButton/customButton";
 import {connect} from 'react-redux';
-import {selectorUser} from '../../redux/user/userSelector';
+import {selectorUser,selectorUserDetails} from '../../redux/user/userSelector';
 import "./customerDetails.scss";
+import { allData } from '../../redux/user/userActions';
 
-const CustomerDetails = ({location,user}) => {
+const CustomerDetails = ({location,user,allData,userDetails}) => {
 
+   const userId = user.id;
 
-  const [userCredetials, setUserCredentials] = useState({
+   console.log({userId})
+
+   const {loading,error,data} = useQuery(USER,{variables:{userId}})
+   console.log(data)
+    React.useEffect(() => {
+      if(data){
+        allData(data.user)
+      }
+    })
+
+   const [userCredetials, setUserCredentials] = useState({
     firstName: "",
     lastName: "",
     email: "",
@@ -33,16 +47,12 @@ const CustomerDetails = ({location,user}) => {
   const {
     firstName,
     lastName,
-    email,
     telephone,
     address
   } = user;
 
    const {city, district,country} = address;
 
-  //  React.useEffect(() => {
-  //    setUserCredentials(firstName,lastName,email,telephone,address,city, district,country)
-  //  })
 
   return (
     <div className="detail">
@@ -100,15 +110,20 @@ const CustomerDetails = ({location,user}) => {
           />
         </form>
         <CustomButton>Update</CustomButton>
-        {/* <button form="form-detail">submit</button> */}
       </div>
     </div>
   );
 };
 
 const mapStateToProps = createStructuredSelector({
-  user:selectorUser
+  user:selectorUser,
+  userDetails:selectorUserDetails
 })
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    allData: data => dispatch(allData(data))
+  }
+}
 
-export default  connect(mapStateToProps)(CustomerDetails);
+export default  connect(mapStateToProps,mapDispatchToProps)(CustomerDetails);

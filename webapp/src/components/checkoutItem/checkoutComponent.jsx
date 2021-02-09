@@ -29,7 +29,6 @@ const CheckoutItem = ({ item, clearItem, addItem, removeItem }) => {
       </span>
       <span className="price">{price}</span>
 
-
      <div style={{backgroundColor:'#000',borderRadius:200,alignItems: 'center',justifyContent:'center',marginRight:30}}> 
        <div style={{color:'#FFF',margin:5,marginRight:15}} className="remove-button" onClick={() => clearItem(item)}>
         &#10005;

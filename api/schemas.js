@@ -1,24 +1,18 @@
 const {gql} = require('apollo-server-express');
 
-/**
- * 
 
-mutation userSignUp($username: String!, $firstName: String!, $lastName: String!, $password: String!, $telephone: String!) {
-  userSignUp(username: $username, firstName: $firstName, lastName: $lastName, password: $password, telephone: $telephone) {
-    id
-  }
-}
-
- */
 
 module.exports =gql`
 
 scalar DateTime
 
+
  type Query{
    test:String!
    products:[Product!]
    product(productId:Int!):Product
+   user(userId:Int!):User
+   categories:[Category!]
 
  }
 
@@ -109,4 +103,9 @@ type OrderItems{
   createdAt:DateTime
   updatedAt:DateTime
 }
+
+
+
+
+
 `;

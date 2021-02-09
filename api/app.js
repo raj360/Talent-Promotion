@@ -3,7 +3,6 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const models = require('./models');
 const path = require('path');
-
 const {ApolloServer} = require('apollo-server-express');
 
 const typeDefs = require('./schemas');
@@ -15,9 +14,8 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   context:{models},
-  introspection: true,
-  playground: true,
 });
+
 
 const app = express();
 
@@ -31,3 +29,8 @@ app.use(express.static(path.join(__dirname, 'public/images/')));
 app.use('/uploads',express.static('uploads'));
 
 module.exports = {app,server};
+
+
+
+
+

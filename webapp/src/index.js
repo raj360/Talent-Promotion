@@ -6,20 +6,18 @@ import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
-import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+import { ApolloClient, ApolloProvider, InMemoryCache,HttpLink } from '@apollo/client';
 import { store, persistor } from "./redux/store";
 import "bootstrap/dist/css/bootstrap.css";
 import "font-awesome/css/font-awesome.min.css";
 
-
-
-
-
-
+import { createUploadLink } from 'apollo-upload-client';
 
 const client = new ApolloClient({
-  uri: 'http://localhost:4000/talent-promotion/api/v1',
-  cache: new InMemoryCache()
+  cache: new InMemoryCache(),
+  link: new createUploadLink({
+    uri: 'http://localhost:4000/talent-promotion/api/v1'
+  })
 });
 
 
