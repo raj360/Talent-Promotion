@@ -16,12 +16,11 @@ mutation createProduct($name: String!, $description: String!, $price: Float!, $i
   }
 }
 
-
-`
+`;
 
 export const USER_DETAILS = gql`
 
-mutation userDetails($userId: Int!) {
+mutation userDetails($userId:Int!){
   userDetails(userId: $userId) {
     id
     firstName
@@ -32,6 +31,23 @@ mutation userDetails($userId: Int!) {
       id
       city
       district
+      country
+    }
+    order {
+      id
+      orderItems {
+        id
+        cartItems {
+          id
+          product {
+            id
+            name
+            imageUrl
+            price
+          }
+          quantity
+        }
+      }
     }
     cart {
       id

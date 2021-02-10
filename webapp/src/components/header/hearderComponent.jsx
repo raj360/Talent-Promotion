@@ -17,10 +17,6 @@ const Header = ({ hidden,isLoggedIn ,logOutUser,user}) => {
   const [nav, setNav] = useState(false);
 
   const showSidebar = () => setNav(!nav);
-
-   
-        console.log('Testing if is logged in ')
-        console.log(user)
        
 
   return (

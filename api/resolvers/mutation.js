@@ -44,7 +44,7 @@ module.exports ={
   },
   userSignIn:async (parent,{username,password,telephone},{models})  => await models.user.findOne({where:{username,password}}),
   createProduct:async (parent,{name,description,price,image,userId,categoryId},{models})=> {
-   console.log({name,description,price,image,userId,categoryId})
+
     const { filename,createReadStream } = await image;
     const stream = createReadStream();
     const result = await storeFS({ stream, filename });
@@ -85,25 +85,32 @@ module.exports ={
     await models.product.update({status:0},{where:{id:productId}})
     return await models.user.findOne({where:{id:userId}})
   },
-  orderItem:async (parent,{userId,productIds,quantities},{models}) => {
-
-      const cart =await models.cart.findOne({where:{userId}})
-      let cartId = cart.id;
+  makeOrder:async (parent,{userId,productIds,quantities},{models}) => {
+      const order = await models.order.create({userId})
+      const orderId = order.id;
+      const cart =await models.cart.findOne({where:{userId}});
+      const cartId = cart.id;
 
       //mapping productIds quanties and cartId in same array [[{product,quantity,cartId}]]
-      const order  =  productIds.map((product,index1) =>quantities.reduce((array,quantity,index2) => {
-        if(index1===index2) array.push(({product,quantity,cartId}))
+      const cartItems  =  productIds.map((productId,index1) =>quantities.reduce((array,quantity,index2) => {
+        if(index1===index2) array.push(({productId,quantity,cartId}))
         return array;
       },[]));
 
-     const cartItems =  order.map(item => item[0])
+     const items =  cartItems.map(item => item[0]);
+    
 
-     await models.cartItem.bulkCreate(cartItems)
+     const orderItems = await models.cartItem.bulkCreate(items);
+    
+     const cartItemIds = orderItems.map(item => ({cartItemId: item.id,orderId}));
+   
+     await models.orderItem.bulkCreate(cartItemIds);
+
+     return await models.user.findOne({where:{id:userId}});
+
+  },
 
 
-     
-
-  }
 
  
 }

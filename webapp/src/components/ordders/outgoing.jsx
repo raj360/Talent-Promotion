@@ -5,11 +5,26 @@ import OrderItem from "../orderItem/orderItem";
 import OutGoingOrderItem from "../orderItem/outgoingorderitem";
 
 import { getAllOrders } from "../../services/demoData";
-import CustomButton from "../customButton/customButton";
-import "./orders.scss";
 
-const OutGoing = ({ match }) => {
+import "./orders.scss";
+import { createStructuredSelector } from 'reselect';
+import { selectorUserDetails } from '../../redux/user/userSelector';
+import { connect } from 'react-redux';
+
+const OutGoing = ({ match,userDetails }) => {
   const orders = getAllOrders();
+  const {order} = userDetails
+  console.log({orders,order})
+
+
+  const getDetails = (order) =>{
+    if(order.lengh > 0){
+      console.log('')
+    }else{
+      return []
+    }
+  }
+
 
   return (
     <div className="order-details">
@@ -18,7 +33,7 @@ const OutGoing = ({ match }) => {
       </div>
       <div className="tabledata">
         <div className="data">
-          {orders.map((item) => (
+          {order.map((item) => (
             <OutGoingOrderItem key={item.id} item={item} />
           ))}
         </div>
@@ -39,4 +54,8 @@ const styles = {
   button2:{margin:20,padding:10,width:100,color:'black',borderRadius:5,fontWeight:800}
 }
 
-export default OutGoing;
+const mapStateToProps = createStructuredSelector({
+  userDetails:selectorUserDetails
+})
+
+export default connect(mapStateToProps, null)(OutGoing)

@@ -6,10 +6,13 @@ import OrderItem from "../orderItem/orderItem";
 import { getAllOrders } from "../../services/demoData";
 import CustomButton from "../customButton/customButton";
 import "./orders.scss";
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { selectorUserDetails } from '../../redux/user/userSelector';
 
-const CustomerOrders = ({ match }) => {
+const CustomerOrders = ({ match,userDetails }) => {
   const orders = getAllOrders();
-
+ 
   return (
     <div className="order-details">
       <div className="menu">
@@ -40,4 +43,11 @@ const styles = {
   button2:{margin:20,padding:10,width:100,color:'black',borderRadius:5,fontWeight:800}
 }
 
-export default CustomerOrders;
+const mapStateToProps = createStructuredSelector({
+  userDetails:selectorUserDetails
+})
+
+
+
+export default connect(mapStateToProps, null)(CustomerOrders)
+

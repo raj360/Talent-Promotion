@@ -18,8 +18,6 @@ const CheckoutPage = ({ cartItems, total }) => {
 
       const quantities = cartItems.map(cart => cart.quantity)
       const productIds = cartItems.map(cart => cart.id)
-
-   
      
   }
   

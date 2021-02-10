@@ -17,6 +17,7 @@ const server = new ApolloServer({
 });
 
 
+
 const app = express();
 
 server.applyMiddleware({app,path:'/talent-promotion/api/v1'});

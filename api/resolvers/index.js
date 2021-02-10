@@ -4,6 +4,8 @@ const User = require('./user');
 const Product = require('./product');
 const Cart = require('./cart');
 const CartItems = require('./cartItems');
+const Order = require('./order');
+const OrderItems = require('./orderItems');
 
 module.exports ={
   Query,
@@ -11,5 +13,10 @@ module.exports ={
   Product,
   CartItems,
   Cart,
+  OrderItems,
+  Order,
   Mutation
 }
+
+
+

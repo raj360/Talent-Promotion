@@ -10,7 +10,6 @@ import "./orders.scss";
 
 const Incoming = ({ match }) => {
   const orders = getAllOrders();
-  console.log(match)
 
 
   return (

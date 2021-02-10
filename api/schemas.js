@@ -6,7 +6,6 @@ module.exports =gql`
 
 scalar DateTime
 
-
  type Query{
    test:String!
    products:[Product!]
@@ -34,7 +33,7 @@ scalar DateTime
    userAddress(userId:Int!,country:String!,city:String!,district:String!):Address,
    userDetails(userId:Int!):User
    removeProduct(productId:Int!,userId:Int!):User
-    orderItem(userId:Int,productIds:[Int!],quantities:[Int!]):Cart
+    makeOrder(userId:Int!,productIds:[Int!]!,quantities:[Int!]!):User
  }
 
 
@@ -49,6 +48,8 @@ scalar DateTime
    address:Address
    products:[Product!]
    cart:Cart
+   order:[Order!]
+
  }
 
  type Address{
@@ -91,23 +92,20 @@ type CartItems{
   updatedAt:DateTime
 }
 
+
 type Order{
   id:Int!
   user:User
-  orderItems:OrderItems
+  orderItems:[OrderItems]
+  createdAt:DateTime!
 }
 
 type OrderItems{
   id:Int!
-  price:Int!
-  quantity:Int!
-  product:Product
+  cartItems:CartItems!
   createdAt:DateTime
   updatedAt:DateTime
 }
-
-
-
 
 
 `;

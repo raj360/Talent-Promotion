@@ -14,16 +14,14 @@ const CustomerDetails = ({location,user,allData,userDetails}) => {
 
    const userId = user.id;
 
-   console.log({userId})
-
    const {loading,error,data} = useQuery(USER,{variables:{userId}})
-   console.log(data)
+
     React.useEffect(() => {
       if(data){
         allData(data.user)
       }
     })
-
+  
    const [userCredetials, setUserCredentials] = useState({
     firstName: "",
     lastName: "",

@@ -4,13 +4,15 @@ import { addItem } from "../../redux/cart/cartActions";
 import {useQuery} from '@apollo/client';
 import CustomButton from "../customButton/customButton";
 import {BASE_URL} from '../../utils';
+import {createStructuredSelector} from 'reselect';
 import "./productDetails.scss";
-import {PRODUCT} from '../graphql/query'
+import {PRODUCT} from '../graphql/query';
+import { selectorUserDetails } from "../../redux/user/userSelector";
+
 
 const ProductDetails = ({ addItem, match }) => {
   const productId = Number(match.params.productId);
 
-  const [t,setT]  = React.useState(true)
   const {loading,error,data}  = useQuery(PRODUCT,{variables:{productId}})
 
   const [product, setProduct] = useState({});
@@ -22,7 +24,6 @@ const ProductDetails = ({ addItem, match }) => {
     }
   }, [productId]);
 
-console.log(data)
 
 
   return (
@@ -79,4 +80,8 @@ console.log(data)
 const mapDispatchToProps = (dispatch) => ({
   addItem: (item) => dispatch(addItem(item)),
 });
-export default connect(null, mapDispatchToProps)(ProductDetails);
+const mapStateToProps = createStructuredSelector({
+  userDetails: selectorUserDetails
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductDetails);

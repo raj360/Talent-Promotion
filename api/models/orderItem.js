@@ -9,14 +9,6 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       primaryKey: true
     },
-    price: {
-      type: DataTypes.DECIMAL(10,2),
-      allowNull: true
-    },
-    quantity: {
-      type: DataTypes.INTEGER,
-      allowNull: true
-    },
     orderId: {
       type: DataTypes.INTEGER,
       allowNull: false,

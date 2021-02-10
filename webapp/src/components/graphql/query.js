@@ -31,6 +31,7 @@ export const USER = gql`
 
 query user($userId: Int!) {
   user(userId: $userId) {
+    
     id
     firstName
     lastName
@@ -38,8 +39,41 @@ query user($userId: Int!) {
     username
     address {
       id
+      city
+      district
+      country
     }
-  
+    order {
+      id
+      orderItems {
+        id
+        createdAt
+        cartItems {
+          id
+          product {
+            id
+            name
+            imageUrl
+            price
+          }
+          quantity
+        }
+      }
+    }
+    cart {
+      id
+      cartItems {
+        id
+        product {
+          id
+          name
+          imageUrl
+          price
+        }
+        quantity
+        createdAt
+      }
+    }
     products {
       id
       name
@@ -50,6 +84,7 @@ query user($userId: Int!) {
         name
       }
     }
+
   }
 }
 
