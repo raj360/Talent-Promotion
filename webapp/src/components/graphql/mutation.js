@@ -82,3 +82,47 @@ mutation userSignIn($username: String!, $telephone: String!, $password: String!)
 `;
 
 
+
+export const REMOVE_PRODUCT = gql`
+
+mutation removeProduct($productId:Int!,$userId:Int!){
+  removeProduct(productId: $productId, userId: $userId){
+   id
+    firstName
+    lastName
+    telephone
+    username
+    address {
+      id
+      city
+      district
+    }
+    cart {
+      id
+      cartItems {
+        id
+        product {
+          id
+          name
+          imageUrl
+          price
+        }
+        quantity
+        createdAt
+      }
+    }
+    products {
+      id
+      name
+      description
+      price
+      imageUrl
+      category {
+        name
+      }
+    }
+}
+}
+
+`;
+

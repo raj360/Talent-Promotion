@@ -19,6 +19,7 @@ const storeFS =async ({ stream, filename }) => {
     );
 }
 
+
 module.exports ={
   test:()=> 'Testing if this is working just fine',
   userSignUp:async (parent,{username,firstName,lastName,password,telephone,country,city,district},{models})=> {
@@ -79,6 +80,33 @@ module.exports ={
   userAddress:async (parent,{userId,country,city,district},{models}) => await models.address.create({userId,country,city,district}),
 
   userDetails:async (parent,{userId},{models}) => await models.user.findOne({where:{id:userId}}),
+
+  removeProduct:async (parent,{productId,userId},{models}) => {
+    await models.product.update({status:0},{where:{id:productId}})
+    return await models.user.findOne({where:{id:userId}})
+  },
+  orderItem:async (parent,{userId,productIds,quantities},{models}) => {
+
+      const cart =await models.cart.findOne({where:{userId}})
+      let cartId = cart.id;
+
+      //mapping productIds quanties and cartId in same array [[{product,quantity,cartId}]]
+      const order  =  productIds.map((product,index1) =>quantities.reduce((array,quantity,index2) => {
+        if(index1===index2) array.push(({product,quantity,cartId}))
+        return array;
+      },[]));
+
+     const cartItems =  order.map(item => item[0])
+
+     await models.cartItem.bulkCreate(cartItems)
+
+
+     
+
+  }
+
  
 }
+
+
 

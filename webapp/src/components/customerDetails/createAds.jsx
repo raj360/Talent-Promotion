@@ -14,7 +14,7 @@ import Textarea from "../textInput/textarea";
 import "./customerDetails.scss";
 
 
-const CreateAds = ({user}) => {
+const CreateAds = ({user,location}) => {
    const userId = user.id;
 
   const {data} = useQuery(CATEGORIES)
@@ -22,6 +22,10 @@ const CreateAds = ({user}) => {
     onCompleted: data=> {
       if(data){
          window.alert('You add has been created succesfuly')
+         setTimeout(() => {
+          const { state } = location;
+          window.location = state ? state.from.pathname : "/";
+         }, 1000);
       }
     }
   })

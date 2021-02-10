@@ -4,18 +4,30 @@ import { Link } from "react-router-dom";
 import { createStructuredSelector } from "reselect";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons";
-
+import {Col,Row} from 'reactstrap';
 import { selectCartItems, selectCartTotal } from "../../redux/cart/cartSeletor";
 
 import CheckoutItem from "../checkoutItem/checkoutComponent";
 
 import "./checkoutPageStyles.scss";
 
-const CheckoutPage = ({ cartItems, total }) => (
+const CheckoutPage = ({ cartItems, total }) => {
+
+
+  const handleItemClick = (item) => {
+
+      const quantities = cartItems.map(cart => cart.quantity)
+      const productIds = cartItems.map(cart => cart.id)
+
+   
+     
+  }
+  
+  return (
   <>
     <Link to="/" className="back">
       <FontAwesomeIcon icon={faAngleDoubleLeft} />
-      <span>continue shopping</span>
+      <span>view more ads</span>
     </Link>
     <div
       style={{padding:20,borderRadius:5}} 
@@ -40,15 +52,35 @@ const CheckoutPage = ({ cartItems, total }) => (
       {cartItems.map((cartItem) => (
         <CheckoutItem key={cartItem.id} item={cartItem} />
       ))}
-      <div className="total">
-        <span>Total:Ugx:{total}</span>
+     <Row>
+      <Col xs="6" sm="6">
+      <div>
+        <button onClick={() => handleItemClick(cartItems)}style={styles.button} >
+          confirm order
+        </button>
       </div>
+      </Col>
+
+      <Col xs="6" sm="6">
+       <div style={styles.total} >
+        <h4>Total:Ugx:{total}</h4>
+      </div>
+      </Col>
+      </Row> 
+     
     </div>
   </>
-);
+)
+
+};
 const mapStateToProps = createStructuredSelector({
   cartItems: selectCartItems,
   total: selectCartTotal,
 });
 
 export default connect(mapStateToProps)(CheckoutPage);
+
+const styles = {
+  button: {margin:20,padding:10,width:'80%',color:'white',borderRadius:5,fontWeight:800,backgroundColor:'black'},
+  total:{marginTop: 30}
+}

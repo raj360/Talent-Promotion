@@ -33,6 +33,8 @@ scalar DateTime
    createOrder(userId:Int!,price:Float,quantity:Int!,cartItemId:Int!):Order,
    userAddress(userId:Int!,country:String!,city:String!,district:String!):Address,
    userDetails(userId:Int!):User
+   removeProduct(productId:Int!,userId:Int!):User
+    orderItem(userId:Int,productIds:[Int!],quantities:[Int!]):Cart
  }
 
 

@@ -18,8 +18,13 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: true
     },
     price: {
-      type: DataTypes.DECIMAL(10,4),
+      type: DataTypes.DECIMAL(20,2),
       allowNull: true
+    },
+    status: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 1
     },
     imageUrl: {
       type: DataTypes.TEXT,

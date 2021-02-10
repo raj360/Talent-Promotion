@@ -23,9 +23,7 @@ const HomePage = () => {
   return arr.filter(obj => obj.category.name === category);
   }
 
-  
-
-  const [category,setCategory] = useState('');
+  const [category,setCategory] = useState('All');
 
   const [nav, setNav] = useState(false);
 
@@ -35,10 +33,9 @@ const HomePage = () => {
   // const handleCategoryChange = (ele) =>setCategory(ele);
   const handlePageChange = (page) => setCurrentPage(page);
  
-   console.log(products)
 
   const sorted = () => {
-       if(category === '') {
+       if(category === 'All') {
          return paginate(products, currentPage, pageSize);
        }else{
          return paginate(filterViaCategory(products,category),currentPage,pageSize);

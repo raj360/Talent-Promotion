@@ -36,6 +36,9 @@ export const navs = [
 
 
 export const sideBar = [
+  { 
+    name:'All'
+  },
   {
     name: "Electronics",
   },

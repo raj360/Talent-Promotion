@@ -9,7 +9,6 @@ var _product = require("./product");
 var _transaction = require("./transaction");
 var _user = require("./user");
 
-
 function initModels(sequelize) {
   var address = _address(sequelize, DataTypes);
   var cart = _cart(sequelize, DataTypes);
