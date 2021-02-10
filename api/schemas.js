@@ -33,7 +33,7 @@ scalar DateTime
    userAddress(userId:Int!,country:String!,city:String!,district:String!):Address,
    userDetails(userId:Int!):User
    removeProduct(productId:Int!,userId:Int!):User
-    makeOrder(userId:Int!,productIds:[Int!]!,quantities:[Int!]!):User
+   makeOrder(userId:Int!,productIds:[Int!]!,quantities:[Int!]!):User
  }
 
 
@@ -49,8 +49,9 @@ scalar DateTime
    products:[Product!]
    cart:Cart
    order:[Order!]
-
  }
+
+ 
 
  type Address{
    id:Int!
@@ -58,6 +59,7 @@ scalar DateTime
    district:String!
    city:String!
  }
+
 
  type Product{
    id:Int!
@@ -70,6 +72,7 @@ scalar DateTime
    createdAt:DateTime
    updatedAt:DateTime
  }
+
 
 
  type Category{

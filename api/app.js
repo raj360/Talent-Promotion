@@ -9,7 +9,6 @@ const typeDefs = require('./schemas');
 const resolvers = require('./resolvers');
 
 
-
 const server = new ApolloServer({
   typeDefs,
   resolvers,
@@ -17,10 +16,11 @@ const server = new ApolloServer({
 });
 
 
-
 const app = express();
 
 server.applyMiddleware({app,path:'/talent-promotion/api/v1'});
+
+
 
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));

@@ -20,12 +20,12 @@ const CustomerSideBar = () => {
          <p>
           <Link to='/outgoing'>Outgoing orders</Link>
         </p>
-        <p>
+        {/* <p>
           <Link to='/incoming'>Incoming orders</Link>
-        </p>
-         <p>
+        </p> */}
+         {/* <p>
           <Link to='/transaction'>Transactions</Link>
-        </p>
+        </p> */}
          <p>
           <Link to='/ads'>My Ads</Link>
         </p>
