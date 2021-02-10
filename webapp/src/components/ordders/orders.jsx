@@ -2,9 +2,7 @@ import React from "react";
 
 import CustomerSideBar from "../customerSideMenu/customerSide";
 import OrderItem from "../orderItem/orderItem";
-
 import { getAllOrders } from "../../services/demoData";
-import CustomButton from "../customButton/customButton";
 import "./orders.scss";
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';

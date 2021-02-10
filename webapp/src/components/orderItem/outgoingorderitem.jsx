@@ -9,10 +9,11 @@ const test3= require('../../assets/image13.jpg');
 const test4 = require('../../assets/image14.jpg');
 const test5 = require('../../assets/image15.jpg');
 //cartItems
-const OutGoingOrderItem = ({ item }) => {
-  const {orderItems} = item;
-  console.log(orderItems)
+const OutGoingOrderItem = ({ item, createdAt }) => {
 
+  const {orderItems} = item;
+  
+console.log(createdAt)
   const computeTotalCost = orderItems => orderItems.map(order => (order.cartItems.quantity*order.cartItems.product.price)).reduce((a,b)=> a+b)
 
   const computeTotalQuantity = orderItems => orderItems.map(order => (order.cartItems.quantity)).reduce((a,b)=> a+b)
@@ -26,6 +27,8 @@ const OutGoingOrderItem = ({ item }) => {
           <div key={item.id}>
           <p>{item.cartItems.product.name}</p>
           <img  src={BASE_URL+item.cartItems.product.imageUrl} style={{width:100,height:100,borderRadius:5,marginTop:-10}} alt="" /> 
+          <p>AdBy - {item.cartItems.product.owner.firstName}</p>
+          <p>{item.cartItems.product.owner.telephone} </p>
           </div>
         ))}
        </Carousel>
@@ -35,12 +38,12 @@ const OutGoingOrderItem = ({ item }) => {
         <span className="value">{`(${computeTotalQuantity(orderItems)})`}</span>
       </span>
       <span className="price">{computeTotalCost(orderItems)}</span>
-        <span>{(new Date().toLocaleString())}</span>
+        <span>{new Date(createdAt).toLocaleString()}</span>
         {/* <button style={styles.button2}>Cancle</button> */}
     </div>
   );
 };
-
+// (new Date().toLocaleString())
 export default OutGoingOrderItem;
 
 

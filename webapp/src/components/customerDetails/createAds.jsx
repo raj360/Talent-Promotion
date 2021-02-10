@@ -134,7 +134,7 @@ const CreateAds = ({user,location}) => {
 
             )
           }
-    <CustomButton >Create Add</CustomButton>
+    <CustomButton >Create Ad</CustomButton>
         </form>
        
       </div>

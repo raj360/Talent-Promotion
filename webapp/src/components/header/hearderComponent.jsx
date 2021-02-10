@@ -98,7 +98,9 @@ const Header = ({ hidden,isLoggedIn ,logOutUser,user}) => {
           Contact Us
         </NavLink>
 
-        <CartIcon />
+        
+         <CartIcon />
+        
       </div>
 
       {hidden ? null : <CartDropDown />}

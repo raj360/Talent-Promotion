@@ -6,19 +6,42 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons";
 import {Col,Row} from 'reactstrap';
 import { selectCartItems, selectCartTotal } from "../../redux/cart/cartSeletor";
-
 import CheckoutItem from "../checkoutItem/checkoutComponent";
-
 import "./checkoutPageStyles.scss";
+import { selectorUser,selectorIsLoggedIn } from "../../redux/user/userSelector";
+import { USER } from "../graphql/query";
+import { useMutation } from '@apollo/client';
 
-const CheckoutPage = ({ cartItems, total }) => {
+import { MAKE_ORDER } from "../graphql/mutation";
+import { clearCart } from "../../redux/cart/cartActions";
 
 
-  const handleItemClick = (item) => {
 
+const CheckoutPage = ({ cartItems, total,user,clearCart,isLoggedIn}) => {
+  
+  const userId = user.id;
+
+  const [makeOrder] = useMutation(MAKE_ORDER,{
+    onCompleted: data => {
+      if(data){
+        clearCart()
+         window.location = '/outgoing'
+      }
+    }
+  })
+
+  const handleItemClick = () => {
       const quantities = cartItems.map(cart => cart.quantity)
       const productIds = cartItems.map(cart => cart.id)
-     
+      
+      if(isLoggedIn){
+        if(quantities.length > 0) 
+      makeOrder({variables:{quantities,productIds,userId}})
+      else
+      window.alert(`Cart is Empty`)
+      }else{
+        window.location ='/login'
+      }
   }
   
   return (
@@ -53,7 +76,7 @@ const CheckoutPage = ({ cartItems, total }) => {
      <Row>
       <Col xs="6" sm="6">
       <div>
-        <button onClick={() => handleItemClick(cartItems)}style={styles.button} >
+        <button onClick={handleItemClick}style={styles.button} >
           confirm order
         </button>
       </div>
@@ -74,11 +97,23 @@ const CheckoutPage = ({ cartItems, total }) => {
 const mapStateToProps = createStructuredSelector({
   cartItems: selectCartItems,
   total: selectCartTotal,
+  user:selectorUser,
+  isLoggedIn:selectorIsLoggedIn
 });
 
-export default connect(mapStateToProps)(CheckoutPage);
+const mapDispatchToProps = (dispatch) => {
+  return {
+     clearCart: () => {
+      dispatch(clearCart());
+    }
+  }
+}
+
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(CheckoutPage);
 
 const styles = {
-  button: {margin:20,padding:10,width:'80%',color:'white',borderRadius:5,fontWeight:800,backgroundColor:'black'},
+  button: {margin:20,padding:10,width:'100%',color:'white',borderRadius:5,fontWeight:800,backgroundColor:'black'},
   total:{marginTop: 30}
 }

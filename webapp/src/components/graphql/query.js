@@ -45,6 +45,7 @@ query user($userId: Int!) {
     }
     order {
       id
+      createdAt
       orderItems {
         id
         createdAt
@@ -55,6 +56,11 @@ query user($userId: Int!) {
             name
             imageUrl
             price
+          owner {
+              id
+              firstName
+              telephone
+            }
           }
           quantity
         }
@@ -105,7 +111,8 @@ export const CATEGORIES = gql`
 
 export const PRODUCTS = gql`
 
-query products{
+query products {
+
   products {
     id
     name
@@ -118,12 +125,14 @@ query products{
       lastName
       telephone
     }
-
-  category {
+    category {
       id
       name
     }
-
+  }
+  categories {
+    id
+    name
   }
 }
 

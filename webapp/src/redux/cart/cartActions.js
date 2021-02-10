@@ -19,6 +19,7 @@ export const clearItemFromCart = (item) => ({
   payload: item,
 });
 
+
 //CartManagment with apollo
 export const addToCart = (data) => ({type: CartActionTypes.ADD_TO_CART, payload: data});
 
@@ -26,4 +27,4 @@ export const incrementCart = (data) => ({type: CartActionTypes.INCREMENT_CART, p
 
 export const decrementCart = (data) => ({type: CartActionTypes.DECREMENT_CART, payload: data});
 
-export const clearCart = (data) => ({type: CartActionTypes.CLEAR, payload: data});
+export const clearCart = () => ({type: CartActionTypes.CLEAR_CART});

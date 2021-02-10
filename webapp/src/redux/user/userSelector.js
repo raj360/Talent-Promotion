@@ -7,3 +7,5 @@ export const selectorIsLoggedIn = createSelector([selectUser],(user) => user.isL
 export const selectorUser = createSelector([selectUser],(user) => user.user)
 
 export const selectorUserDetails = createSelector([selectUser],(user) => user.userDetails)
+
+export const selectorCategories = createSelector([selectUser],(user) => user.categories)

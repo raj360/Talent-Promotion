@@ -8,12 +8,15 @@ import { getAllCrafts } from "../../services/demoData";
 import ProductItem from "../singleItem/singleComponent";
 import { paginate } from "../../services/pagiantion";
 import Pagiantion from "../pagination/pagination";
-import {PRODUCTS} from '../graphql/query'
+import {PRODUCTS} from '../graphql/query';
+import {connect} from 'react-redux'
 import { sideBar } from "../../services/navElements";
-
 import "./homeStyples.scss";
+import { addCategory } from "../../redux/user/userActions";
+import { selectorCategories } from "../../redux/user/userSelector";
+import { createStructuredSelector } from "reselect";
 
-const HomePage = () => {
+const HomePage = ({addCategory,categories}) => {
   const allCrafts = getAllCrafts();
   const pageSize = 12;
 
@@ -22,6 +25,8 @@ const HomePage = () => {
   const  filterViaCategory = (arr, category) => {
   return arr.filter(obj => obj.category.name === category);
   }
+  
+   
 
   const [category,setCategory] = useState('All');
 
@@ -43,7 +48,11 @@ const HomePage = () => {
   }
 
   useEffect(() => {
-    if(data) setProducts(data.products)
+    if(data) {
+    setProducts(data.products)
+    addCategory(data.categories)
+    }
+
   })
 
   return (
@@ -69,7 +78,7 @@ const HomePage = () => {
           <div className={nav ? "nav-menu active" : "nav-menu"}>
             <div className="nav-menu-items">
               <h3>Categories</h3>
-              {sideBar.map((item, index) => {
+              {categories.map((item, index) => {
                 return (
                   <li key={index} onClick={()=> setCategory(item.name)} className="navs">
                     {
@@ -91,7 +100,7 @@ const HomePage = () => {
 
         <div className="categories">
           <h3>Categories</h3>
-          {sideBar.map((item, index) => {
+          {categories.map((item, index) => {
                 return (
                       <p
                         style={{backgroundColor:category===item.name?'#000000':'',
@@ -132,5 +141,17 @@ const HomePage = () => {
     </>
   );
 };
+const mapDispatchToProps = (dispatch,) => {
+  return {
+    addCategory: (data) => {
+      dispatch(addCategory(data))
+    }
+  }
+}
+
+const mapstateToProps = createStructuredSelector({
+  categories:selectorCategories
+})
 //   0704163090
-export default HomePage;
+export default connect(mapstateToProps, mapDispatchToProps)(HomePage)
+

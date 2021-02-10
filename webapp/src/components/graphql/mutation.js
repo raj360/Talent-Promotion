@@ -1,4 +1,16 @@
-import {gql} from '@apollo/client'
+import {gql} from '@apollo/client';
+
+export const MAKE_ORDER = gql`
+
+mutation makeOrder($userId:Int!,$productIds:[Int!]!,$quantities:[Int!]!) {
+  makeOrder(userId: $userId, productIds: $productIds, quantities: $quantities) {
+    id
+    firstName
+  }
+}
+
+
+`;
 
 export const  USER_SIGN_UP = gql`
 mutation userSignUp($username: String!, $firstName: String!, $lastName: String!, $password: String!, $telephone: String!,$country:String!,$city:String!,$district:String!){

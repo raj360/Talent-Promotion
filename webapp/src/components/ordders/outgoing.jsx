@@ -5,26 +5,32 @@ import OrderItem from "../orderItem/orderItem";
 import OutGoingOrderItem from "../orderItem/outgoingorderitem";
 
 import { getAllOrders } from "../../services/demoData";
-
+import {useQuery} from '@apollo/client';
 import "./orders.scss";
 import { createStructuredSelector } from 'reselect';
-import { selectorUserDetails } from '../../redux/user/userSelector';
+import { selectorUserDetails,selectUser } from '../../redux/user/userSelector';
 import { connect } from 'react-redux';
+import { USER } from "../graphql/query";
+import { allData } from "../../redux/user/userActions";
 
-const OutGoing = ({ match,userDetails }) => {
-  const orders = getAllOrders();
+
+
+const OutGoing = ({ match,user,userDetails,allData }) => {
+ 
   const {order} = userDetails
-  console.log({orders,order})
+  const userId = userDetails.id;
 
+ 
+  
+  const {loading,error,data} = useQuery(USER,{variables:{userId}});
 
-  const getDetails = (order) =>{
-    if(order.lengh > 0){
-      console.log('')
-    }else{
-      return []
+  React.useEffect(() => {
+    if(data){
+      allData(data.user)
     }
-  }
+  })
 
+  
 
   return (
     <div className="order-details">
@@ -34,7 +40,7 @@ const OutGoing = ({ match,userDetails }) => {
       <div className="tabledata">
         <div className="data">
           {order.map((item) => (
-            <OutGoingOrderItem key={item.id} item={item} />
+            <OutGoingOrderItem key={item.id} item={item} createdAt={item.createdAt} />
           ))}
         </div>
         <div
@@ -58,4 +64,10 @@ const mapStateToProps = createStructuredSelector({
   userDetails:selectorUserDetails
 })
 
-export default connect(mapStateToProps, null)(OutGoing)
+ const mapDispatchToProps = (dispatch) => {
+   return {
+     allData: data => dispatch(allData(data))
+   }
+ }
+
+export default connect(mapStateToProps, mapDispatchToProps)(OutGoing)
