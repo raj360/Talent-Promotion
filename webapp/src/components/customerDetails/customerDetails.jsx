@@ -21,7 +21,7 @@ const CustomerDetails = ({location,user,allData,userDetails}) => {
         allData(data.user)
       }
     })
-  
+ 
    const [userCredetials, setUserCredentials] = useState({
     firstName: "",
     lastName: "",

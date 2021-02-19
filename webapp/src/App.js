@@ -18,7 +18,6 @@ import MyAds from "./components/ordders/myads";
 import Transaction from "./components/ordders/transaction";
 import CreateAds from "./components/customerDetails/createAds";
 
-
 import "./App.css";
 
 
