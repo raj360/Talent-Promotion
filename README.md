@@ -1,7 +1,7 @@
 #Talents promotion application
 
 ## Description
- - Talents promtion is a simple system that allow users to thereadvertise there goods to whoever has access to the system
+ - Talents promtion is a simple system that allow to advertise their goods to whoever has access to the system
  
  
  ### set up 
