@@ -6,8 +6,9 @@
  
  ### set up 
  - git clone https://github.com/raj360/Talent-Promotion.git
- - cd Talent-Promotion/api yarn start
- -cd Talent-Promotion/webapp yarn start
+ - run `yarn` in both webapp and api `to have dependencies installed`
+ - run `yarn start` cd Talent-Promotion/api `to run the api`
+ - run  `yarn start` cd Talent-Promotion/webapp `to run the webapp`
   
 
 
